@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Food & Drinks",
+    "icon": "utensils",
+    "color": "#FF6B6B",
+    "categoryStatus": true,
+    "userId": "1"
+  },
+  {
+    "id": "2",
+    "name": "Shopping",
+    "icon": "shopping-bag",
+    "color": "#4D96FF",
+    "categoryStatus": true,
+    "userId": "1"
+  },
+  {
+    "id": "3",
+    "name": "Transportation",
+    "icon": "car",
+    "color": "#6BCB77",
+    "categoryStatus": true,
+    "userId": "1"
+  }
+]
