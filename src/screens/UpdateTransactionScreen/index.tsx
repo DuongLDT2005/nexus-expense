@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import ExpenseEntry from '../../components/molecules/ExpenseEntry';
 
 export default function UpdateTransactionScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-background">
-      <Text className="text-lg font-semibold text-gray-700">UpdateTransactionScreen</Text>
-    </View>
-  );
+  const route = useRoute();
+  return <ExpenseEntry type="Update" route={route} />;
 }

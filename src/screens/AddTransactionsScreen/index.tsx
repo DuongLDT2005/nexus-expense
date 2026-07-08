@@ -1,10 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import ExpenseEntry from '../../components/molecules/ExpenseEntry';
 
 export default function AddTransactionsScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-background">
-      <Text className="text-lg font-semibold text-gray-700">AddTransactionsScreen</Text>
-    </View>
-  );
+  return <ExpenseEntry type="Add" />;
 }
