@@ -1,83 +1,200 @@
-import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/slices/authSlice";
-import { useNavigation } from "@react-navigation/native";
-import { useHomeScreen } from "./useHomeScreen";
-import PrimaryView from "../../components/atoms/PrimaryView";
-import HeaderContainer from "../../components/molecules/HeaderContainer";
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { MainStackParamList } from '../../types';
+import { useHomeScreen } from './useHomeScreen';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/slices/authSlice';
+
+import Icon from '../../components/atoms/Icons';
+import PrimaryView from '../../components/atoms/PrimaryView';
+import PrimaryText from '../../components/atoms/PrimaryText';
+import EmptyState from '../../components/atoms/EmptyState';
+import HeaderContainer from '../../components/molecules/HeaderContainer';
+import TransactionList from '../../components/molecules/TransactionList';
+import MonthYearPicker from '../../components/molecules/MonthYearPicker';
+import { formatWithSymbol } from '../../utils/numberUtils';
+import useColorScheme from '../../hooks/useColorScheme';
 
 export default function HomeScreen() {
-  const { categories, loading, error, refetch } = useHomeScreen();
-  const user = useSelector(selectUser);
-  const navigation = useNavigation<any>();
+  const {
+    refreshing,
+    currencySymbol,
+    onRefresh,
+    sortedTransactions,
+    selectedYear,
+    selectedMonthIndex,
+    selectedMonthName,
+    selectedMonth,
+    availableYears,
+    todayTotal,
+    yesterdayTotal,
+    handleMonthYearSelect,
+    showMonthPicker,
+    setShowMonthPicker,
+    currency,
+  } = useHomeScreen();
 
+  const user = useSelector(selectUser);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<MainStackParamList>>();
+  const isDark = useColorScheme() === 'dark';
+
+  // Redirect to ChooseCurrency if not set
   useEffect(() => {
     if (user && !user.currencyId) {
-      navigation.navigate("ChooseCurrencyScreen", { isFromSettings: false });
+      navigation.navigate('ChooseCurrencyScreen', { isFromSettings: false });
     }
   }, [user, navigation]);
 
-  return (
-    <PrimaryView useSidePadding={false} style={{ paddingTop: 0 }}>
-      <HeaderContainer headerText="Nexus Test Connection" />
+  const greetingText = user?.fullName
+    ? `Hey, ${user.fullName.split(' ')[0]}`
+    : 'Hey, there';
 
-      <View className="flex-1 mt-6 px-6">
-        <Text className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-          API Connection Test (Expo Go)
-        </Text>
+  // ─── Summary Cards + Section Title (List Header) ──────────────────────────
 
-        {loading ? (
-          <View className="flex-1 justify-center items-center">
-            <ActivityIndicator size="large" color="#22c55e" />
-            <Text className="text-gray-500 mt-2">Connecting to server...</Text>
-          </View>
-        ) : error ? (
-          <View className="flex-1 justify-center items-center px-4">
-            <Text className="text-red-500 font-semibold text-center mb-2">
-              Error connecting to JSON Server!
-            </Text>
-            <Text className="text-gray-500 text-sm text-center mb-4">
-              {error}
-            </Text>
-            <TouchableOpacity
-              onPress={refetch}
-              className="bg-red-500 px-4 py-2 rounded-lg"
+  const listHeader = useMemo(
+    () => (
+      <View className="px-4">
+        {/* Today / Yesterday summary cards */}
+        <View className="flex-row gap-3 mt-4 mb-5">
+          {/* TODAY card */}
+          <TouchableOpacity
+            onPress={() => setShowMonthPicker(true)}
+            activeOpacity={0.7}
+            className="flex-1 rounded-2xl px-4 py-3.5 bg-white dark:bg-surface-variant/20"
+          >
+            <View
+              className="w-10 h-10 rounded-xl items-center justify-center mb-2.5"
+              style={{ backgroundColor: isDark ? 'rgba(139,130,255,0.2)' : 'rgba(79,70,229,0.15)' }}
             >
-              <Text className="text-white font-bold">Retry</Text>
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <FlatList
-            data={categories}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <View
-                className="p-4 mb-3 rounded-xl flex-row items-center justify-between"
-                style={{ backgroundColor: item.color || "#e5e7eb" }}
-              >
-                <Text className="text-white font-bold text-lg">
-                  {item.name}
-                </Text>
-                <Text className="text-white/80 font-mono text-sm">
-                  {item.icon}
-                </Text>
-              </View>
-            )}
-            ListEmptyComponent={
-              <Text className="text-gray-500 text-center mt-8">
-                No categories found in database.
-              </Text>
-            }
-          />
-        )}
+              <Icon
+                name="calendar"
+                size={19}
+                color={isDark ? '#a5a0ff' : '#4f46e5'}
+              />
+            </View>
+            <PrimaryText
+              size={10}
+              weight="bold"
+              className="text-on-surface-variant tracking-widest uppercase mb-1"
+            >
+              Today
+            </PrimaryText>
+            <PrimaryText size={22} weight="bold" variant="number">
+              {formatWithSymbol(todayTotal, currencySymbol, currency?.code)}
+            </PrimaryText>
+          </TouchableOpacity>
+
+          {/* YESTERDAY card */}
+          <TouchableOpacity
+            onPress={() => setShowMonthPicker(true)}
+            activeOpacity={0.7}
+            className="flex-1 rounded-2xl px-4 py-3.5 bg-white dark:bg-surface-variant/20"
+          >
+            <View
+              className="w-10 h-10 rounded-xl items-center justify-center mb-2.5"
+              style={{ backgroundColor: isDark ? 'rgba(74,222,128,0.18)' : 'rgba(22,163,74,0.13)' }}
+            >
+              <Icon
+                name="calendar-days"
+                size={19}
+                color={isDark ? '#86efac' : '#16a34a'}
+              />
+            </View>
+            <PrimaryText
+              size={10}
+              weight="bold"
+              className="text-on-surface-variant tracking-widest uppercase mb-1"
+            >
+              Yesterday
+            </PrimaryText>
+            <PrimaryText size={22} weight="bold" variant="number">
+              {formatWithSymbol(yesterdayTotal, currencySymbol, currency?.code)}
+            </PrimaryText>
+          </TouchableOpacity>
+        </View>
+
+        <PrimaryText
+          size={16}
+          weight="bold"
+          className="mb-2 mt-2"
+          color="#16a34a"
+        >
+          All Transactions
+        </PrimaryText>
       </View>
-    </PrimaryView>
+    ),
+    [
+      todayTotal,
+      yesterdayTotal,
+      currencySymbol,
+      isDark,
+      setShowMonthPicker,
+      currency,
+    ],
+  );
+
+  // ─── Empty State ──────────────────────────────────────────────────────────
+
+  const listEmpty = useMemo(
+    () => (
+      <View className="px-4">
+        <EmptyState type="Transactions" />
+      </View>
+    ),
+    [],
+  );
+
+  // ─── Render ───────────────────────────────────────────────────────────────
+
+  return (
+    <>
+      <PrimaryView useSidePadding={false} style={{ paddingTop: 0 }}>
+        <HeaderContainer headerText={greetingText} />
+
+        <TransactionList
+          allExpenses={sortedTransactions}
+          edgeToEdge
+          targetMonth={selectedMonth}
+          ListHeaderComponent={listHeader}
+          ListEmptyComponent={listEmpty}
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          contentContainerStyle={{ paddingBottom: 80 }}
+        />
+      </PrimaryView>
+
+      {/* FAB - Add Transaction */}
+      <View className="absolute bottom-5 right-5 z-10">
+        <TouchableOpacity
+          className="w-14 h-14 rounded-full items-center justify-center"
+          style={{
+            backgroundColor: '#4338ca',
+            shadowColor: '#4338ca',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.35,
+            shadowRadius: 8,
+            elevation: 8,
+          }}
+          onPress={() => navigation.navigate('AddTransactionsScreen')}
+          accessibilityLabel="Add transaction"
+          accessibilityRole="button"
+        >
+          <Icon name="plus" size={26} color="#ffffff" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Month/Year Picker Modal */}
+      <MonthYearPicker
+        visible={showMonthPicker}
+        selectedMonth={selectedMonthIndex}
+        selectedYear={selectedYear}
+        availableYears={availableYears}
+        onSelect={handleMonthYearSelect}
+        onClose={() => setShowMonthPicker(false)}
+      />
+    </>
   );
 }
