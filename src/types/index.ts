@@ -38,7 +38,8 @@ export interface Expense {
   title: string;
   amount: number;
   description?: string;
-  date: string; // ISO date string: YYYY-MM-DD
+  date: string;  // ISO date string: YYYY-MM-DD
+  time?: string; // HH:MM (24h format)
 }
 
 // ─── Debt ────────────────────────────────────────────────────────────────────
@@ -117,7 +118,13 @@ export type HomeStackParamList = {
   AddDebtsScreen: { debtorId: string };
   UpdateDebtScreen: { debtId: string };
   EverydayTransactionScreen: { date: string };
-  CategoryTransactionScreen: { categoryId: string };
+  CategoryTransactionScreen: {
+    categoryId: string;
+    categoryName: string;
+    categoryColor: string;
+    categoryIcon?: string;
+    yearMonth: string;
+  };
   ChooseCurrencyScreen: { isFromSettings?: boolean } | undefined;
 };
 

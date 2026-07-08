@@ -22,5 +22,117 @@
     "color": "#6BCB77",
     "categoryStatus": true,
     "userId": "1"
+  },
+  {
+    "id": "4",
+    "name": "Entertainment",
+    "icon": "film",
+    "color": "#C77DFF",
+    "categoryStatus": false,
+    "userId": "1"
+  },
+  {
+    "id": "5",
+    "name": "Health",
+    "icon": "heart-pulse",
+    "color": "#FF9F1C",
+    "categoryStatus": false,
+    "userId": "1"
+  },
+  {
+    "id": "6",
+    "name": "Food & Drinks",
+    "icon": "utensils",
+    "color": "#FF6B6B",
+    "categoryStatus": true,
+    "userId": "2"
+  },
+  {
+    "id": "7",
+    "name": "Shopping",
+    "icon": "shopping-bag",
+    "color": "#4D96FF",
+    "categoryStatus": true,
+    "userId": "2"
+  },
+  {
+    "id": "8",
+    "name": "Transportation",
+    "icon": "car",
+    "color": "#6BCB77",
+    "categoryStatus": true,
+    "userId": "2"
+  },
+  {
+    "id": "9",
+    "name": "Bills & Utilities",
+    "icon": "zap",
+    "color": "#FFC300",
+    "categoryStatus": true,
+    "userId": "2"
+  },
+  {
+    "id": "10",
+    "name": "Travel",
+    "icon": "plane",
+    "color": "#00B4D8",
+    "categoryStatus": true,
+    "userId": "2"
+  },
+  {
+    "id": "sygDB9dXdeen61wX3l8bFUC1",
+    "name": "Transport",
+    "categoryStatus": false,
+    "userId": "1",
+    "icon": "car",
+    "color": "#4ae176"
+  },
+  {
+    "id": "f8llrIKUniQLmzNGcfko4GS6",
+    "name": "Utilities",
+    "categoryStatus": false,
+    "userId": "1",
+    "icon": "zap",
+    "color": "#ffb2b7"
+  },
+  {
+    "id": "y8lWnFSSxQigbuGf4fjNjlA4",
+    "name": "Groceries",
+    "categoryStatus": false,
+    "userId": "1",
+    "icon": "shopping-cart",
+    "color": "#4f46e5"
+  },
+  {
+    "id": "XFYFX4W8NNfQwt_5DCbh2I5G",
+    "name": "Dining Out",
+    "categoryStatus": false,
+    "userId": "1",
+    "icon": "utensils",
+    "color": "#ffdad6"
+  },
+  {
+    "id": "UrkYFbf0PvecRoECSbfwCdtg",
+    "name": "Abc",
+    "categoryStatus": false,
+    "userId": "1",
+    "icon": "tag",
+    "color": "#3525cd"
+  },
+  {
+    "id": "lobwDHS4Ft7LadEaZTsPjBqK",
+    "name": "Llll",
+    "categoryStatus": false,
+    "userId": "1",
+    "icon": "film",
+    "color": "#F43F5E"
+  },
+  {
+    "id": "sTOUCL3oYcNBq8ab7Lx60T_C",
+    "name": "Util",
+    "categoryStatus": true,
+    "userId": "1",
+    "icon": "smile",
+    "color": "#EC4899"
   }
 ]

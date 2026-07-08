@@ -1,1 +1,382 @@
-[]
+[
+  {
+    "id": "exp-u1-001",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "Pho Bo Hanoi",
+    "amount": 85000,
+    "description": "Lunch with colleagues",
+    "date": "2026-07-07",
+    "time": "12:15"
+  },
+  {
+    "id": "exp-u1-002",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "Circle K",
+    "amount": 45000,
+    "description": "Snacks and drinks",
+    "date": "2026-07-07",
+    "time": "16:30"
+  },
+  {
+    "id": "exp-u1-003",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "Gong Cha",
+    "amount": 55000,
+    "description": "Bubble tea",
+    "date": "2026-07-06",
+    "time": "15:00"
+  },
+  {
+    "id": "exp-u1-004",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "KFC",
+    "amount": 120000,
+    "description": "Dinner",
+    "date": "2026-07-05",
+    "time": "18:45"
+  },
+  {
+    "id": "exp-u1-005",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "Highlands Coffee",
+    "amount": 75000,
+    "description": "Morning coffee",
+    "date": "2026-07-04",
+    "time": "08:20"
+  },
+  {
+    "id": "exp-u1-006",
+    "userId": "1",
+    "categoryId": "2",
+    "title": "Uniqlo",
+    "amount": 490000,
+    "description": "Summer T-shirt",
+    "date": "2026-07-06",
+    "time": "14:10"
+  },
+  {
+    "id": "exp-u1-007",
+    "userId": "1",
+    "categoryId": "2",
+    "title": "Shopee",
+    "amount": 235000,
+    "description": "Phone case and cable",
+    "date": "2026-07-04",
+    "time": "21:05"
+  },
+  {
+    "id": "exp-u1-008",
+    "userId": "1",
+    "categoryId": "2",
+    "title": "Vinmart",
+    "amount": 310000,
+    "description": "Weekly groceries",
+    "date": "2026-07-03",
+    "time": "11:30"
+  },
+  {
+    "id": "exp-u1-009",
+    "userId": "1",
+    "categoryId": "3",
+    "title": "Grab Bike",
+    "amount": 35000,
+    "description": "To office",
+    "date": "2026-07-07",
+    "time": "07:50"
+  },
+  {
+    "id": "exp-u1-010",
+    "userId": "1",
+    "categoryId": "3",
+    "title": "Grab Car",
+    "amount": 95000,
+    "description": "Airport pickup",
+    "date": "2026-07-05",
+    "time": "09:00"
+  },
+  {
+    "id": "exp-u1-011",
+    "userId": "1",
+    "categoryId": "3",
+    "title": "Parking fee",
+    "amount": 20000,
+    "description": "Shopping mall",
+    "date": "2026-07-03",
+    "time": "13:45"
+  },
+  {
+    "id": "exp-u1-012",
+    "userId": "1",
+    "categoryId": "4",
+    "title": "Netflix",
+    "amount": 180000,
+    "description": "Monthly subscription",
+    "date": "2026-07-01",
+    "time": "09:00"
+  },
+  {
+    "id": "exp-u1-013",
+    "userId": "1",
+    "categoryId": "4",
+    "title": "CGV Cinema",
+    "amount": 150000,
+    "description": "Movie night",
+    "date": "2026-07-06",
+    "time": "19:30"
+  },
+  {
+    "id": "exp-u1-014",
+    "userId": "1",
+    "categoryId": "5",
+    "title": "Pharmacy",
+    "amount": 65000,
+    "description": "Cold medicine",
+    "date": "2026-07-02",
+    "time": "10:15"
+  },
+  {
+    "id": "exp-u1-015",
+    "userId": "1",
+    "categoryId": "5",
+    "title": "Doctor visit",
+    "amount": 250000,
+    "description": "General checkup",
+    "date": "2026-07-01",
+    "time": "14:00"
+  },
+  {
+    "id": "exp-u1-016",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "Bun Bo Hue",
+    "amount": 65000,
+    "description": "Breakfast",
+    "date": "2026-06-30",
+    "time": "07:30"
+  },
+  {
+    "id": "exp-u1-017",
+    "userId": "1",
+    "categoryId": "1",
+    "title": "The Coffee House",
+    "amount": 85000,
+    "description": "Work from cafe",
+    "date": "2026-06-28",
+    "time": "10:00"
+  },
+  {
+    "id": "exp-u1-018",
+    "userId": "1",
+    "categoryId": "2",
+    "title": "Lazada",
+    "amount": 450000,
+    "description": "Bluetooth earbuds",
+    "date": "2026-06-25",
+    "time": "22:10"
+  },
+  {
+    "id": "exp-u1-019",
+    "userId": "1",
+    "categoryId": "3",
+    "title": "Be Car",
+    "amount": 78000,
+    "description": "Office commute",
+    "date": "2026-06-27",
+    "time": "08:00"
+  },
+  {
+    "id": "exp-u1-020",
+    "userId": "1",
+    "categoryId": "4",
+    "title": "Spotify",
+    "amount": 59000,
+    "description": "Monthly subscription",
+    "date": "2026-06-01",
+    "time": "09:00"
+  },
+  {
+    "id": "exp-u2-001",
+    "userId": "2",
+    "categoryId": "6",
+    "title": "Panda Express",
+    "amount": 95000,
+    "description": "Lunch",
+    "date": "2026-07-07",
+    "time": "12:30"
+  },
+  {
+    "id": "exp-u2-002",
+    "userId": "2",
+    "categoryId": "6",
+    "title": "Family Mart",
+    "amount": 62000,
+    "description": "Convenience store",
+    "date": "2026-07-06",
+    "time": "17:20"
+  },
+  {
+    "id": "exp-u2-003",
+    "userId": "2",
+    "categoryId": "6",
+    "title": "Domino's Pizza",
+    "amount": 185000,
+    "description": "Dinner for two",
+    "date": "2026-07-05",
+    "time": "19:00"
+  },
+  {
+    "id": "exp-u2-004",
+    "userId": "2",
+    "categoryId": "6",
+    "title": "Trung Nguyen Coffee",
+    "amount": 45000,
+    "description": "Morning coffee",
+    "date": "2026-07-04",
+    "time": "07:45"
+  },
+  {
+    "id": "exp-u2-005",
+    "userId": "2",
+    "categoryId": "7",
+    "title": "AEON Mall",
+    "amount": 720000,
+    "description": "Clothes shopping",
+    "date": "2026-07-06",
+    "time": "15:30"
+  },
+  {
+    "id": "exp-u2-006",
+    "userId": "2",
+    "categoryId": "7",
+    "title": "Tiki",
+    "amount": 340000,
+    "description": "Books and stationery",
+    "date": "2026-07-03",
+    "time": "20:00"
+  },
+  {
+    "id": "exp-u2-007",
+    "userId": "2",
+    "categoryId": "8",
+    "title": "Grab Bike",
+    "amount": 28000,
+    "description": "To meeting",
+    "date": "2026-07-07",
+    "time": "08:10"
+  },
+  {
+    "id": "exp-u2-008",
+    "userId": "2",
+    "categoryId": "8",
+    "title": "Xanh SM",
+    "amount": 115000,
+    "description": "City ride",
+    "date": "2026-07-05",
+    "time": "11:00"
+  },
+  {
+    "id": "exp-u2-009",
+    "userId": "2",
+    "categoryId": "8",
+    "title": "Fuel top-up",
+    "amount": 200000,
+    "description": "Motorbike fuel",
+    "date": "2026-07-02",
+    "time": "16:50"
+  },
+  {
+    "id": "exp-u2-010",
+    "userId": "2",
+    "categoryId": "9",
+    "title": "Electricity bill",
+    "amount": 550000,
+    "description": "June electricity",
+    "date": "2026-07-05",
+    "time": "09:30"
+  },
+  {
+    "id": "exp-u2-011",
+    "userId": "2",
+    "categoryId": "9",
+    "title": "Water bill",
+    "amount": 120000,
+    "description": "June water",
+    "date": "2026-07-05",
+    "time": "09:35"
+  },
+  {
+    "id": "exp-u2-012",
+    "userId": "2",
+    "categoryId": "9",
+    "title": "Internet bill",
+    "amount": 280000,
+    "description": "Monthly fiber",
+    "date": "2026-07-01",
+    "time": "10:00"
+  },
+  {
+    "id": "exp-u2-013",
+    "userId": "2",
+    "categoryId": "10",
+    "title": "Train ticket",
+    "amount": 450000,
+    "description": "HCM to Da Nang",
+    "date": "2026-07-03",
+    "time": "08:00"
+  },
+  {
+    "id": "exp-u2-014",
+    "userId": "2",
+    "categoryId": "10",
+    "title": "Hotel booking",
+    "amount": 1200000,
+    "description": "2 nights Da Nang",
+    "date": "2026-07-03",
+    "time": "08:05"
+  },
+  {
+    "id": "exp-u2-015",
+    "userId": "2",
+    "categoryId": "6",
+    "title": "Bun Cha",
+    "amount": 70000,
+    "description": "Street food",
+    "date": "2026-06-30",
+    "time": "12:00"
+  },
+  {
+    "id": "exp-u2-016",
+    "userId": "2",
+    "categoryId": "7",
+    "title": "Shopee Flash Sale",
+    "amount": 560000,
+    "description": "Electronics accessories",
+    "date": "2026-06-28",
+    "time": "00:05"
+  },
+  {
+    "id": "exp-u2-017",
+    "userId": "2",
+    "categoryId": "9",
+    "title": "Phone bill",
+    "amount": 99000,
+    "description": "Mobile data plan",
+    "date": "2026-06-01",
+    "time": "09:00"
+  },
+  {
+    "id": "exp-u2-018",
+    "userId": "2",
+    "categoryId": "10",
+    "title": "Flight ticket",
+    "amount": 2300000,
+    "description": "HCM to Phu Quoc",
+    "date": "2026-06-15",
+    "time": "10:30"
+  }
+]
