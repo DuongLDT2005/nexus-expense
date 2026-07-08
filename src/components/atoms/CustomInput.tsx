@@ -86,9 +86,9 @@ const CustomInput: React.FC<CustomInputProps> = memo(
     }, []);
 
     const borderClass =
-      errors.length > 0 ? "border-error" : "border-transparent";
+      errors.length > 0 ? "border-error" : "border-outline-variant/40";
 
-    const bgClass = disabled ? "bg-surface-dim" : "bg-surface-high";
+    const bgClass = disabled ? "bg-surface-dim" : "bg-white dark:bg-surface-high";
 
     const resolvedSecureTextEntry = secureTextEntry && !isPasswordVisible;
     const resolvedRightIcon =
@@ -105,20 +105,21 @@ const CustomInput: React.FC<CustomInputProps> = memo(
     return (
       <View className={disabled ? "opacity-60" : ""}>
         {label && (
-          <Text className="text-xs font-outfit font-medium text-on-surface-variant mb-1">
+          <Text className="text-[10px] font-outfit font-bold text-on-surface-variant mb-1.5 tracking-widest uppercase">
             {label}
           </Text>
         )}
         <View
-          className={`h-12 flex-row items-center rounded-2xl px-3 border-[1.5px] ${borderClass} ${bgClass}`}
+          className={`${multiline ? 'min-h-[80px]' : 'h-12'} flex-row ${multiline ? 'items-start' : 'items-center'} rounded-2xl px-3 border-[1px] ${borderClass} ${bgClass}`}
         >
           {leftIcon && (
-            <View className="mr-2">
+            <View className={`mr-2 ${multiline ? 'mt-3' : ''}`}>
               <Icon name={leftIcon} size={18} color={iconColor} />
             </View>
           )}
           <TextInput
-            className="flex-1 h-12 text-sm font-outfit font-medium text-on-surface"
+            className={`flex-1 ${multiline ? 'py-3' : 'h-12'} text-sm font-outfit font-medium text-on-surface`}
+            style={{ includeFontPadding: false, textAlignVertical: multiline ? 'top' : 'center' }}
             value={input}
             onChangeText={handleChangeText}
             onFocus={handleFocus}
