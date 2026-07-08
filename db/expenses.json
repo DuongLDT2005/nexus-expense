@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "id": "l7VykZ1nJbMvtc5-8lG3vDwa",
+    "title": "coffee",
+    "amount": 100000,
+    "description": "coffee",
+    "categoryId": "1",
+    "userId": "3",
+    "date": "2026-07-06T21:02:15"
+  },
+  {
+    "id": "test-expense-001",
+    "title": "Lunch",
+    "amount": 50,
+    "description": "Team lunch",
+    "categoryId": "1",
+    "userId": "1",
+    "date": "2026-07-06T12:00:00"
+  },
+  {
+    "id": "test-expense-002",
+    "title": "Grab",
+    "amount": 15,
+    "description": "To office",
+    "categoryId": "3",
+    "userId": "1",
+    "date": "2026-07-06T08:30:00"
+  },
+  {
+    "id": "test-expense-003",
+    "title": "Coffee",
+    "amount": 5,
+    "description": "Morning coffee",
+    "categoryId": "1",
+    "userId": "1",
+    "date": "2026-07-05T09:00:00"
+  },
+  {
+    "id": "test-expense-004",
+    "title": "Shoes",
+    "amount": 120,
+    "description": "New running shoes",
+    "categoryId": "2",
+    "userId": "1",
+    "date": "2026-07-04T15:00:00"
+  },
+  {
+    "id": "UL330_R9cU7aOZso2Ydnrp8T",
+    "title": "coffee",
+    "amount": 100,
+    "description": "sa",
+    "categoryId": "1",
+    "userId": "1",
+    "date": "2026-07-06T21:08:20"
+  }
+]
