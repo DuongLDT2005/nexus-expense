@@ -1,0 +1,235 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Edit Profile - Nexus Luxe</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c7c4d8",
+                    "on-background": "#1b1b24",
+                    "primary-fixed": "#e2dfff",
+                    "outline": "#777587",
+                    "surface": "#fcf8ff",
+                    "inverse-primary": "#c3c0ff",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "background": "#fcf8ff",
+                    "inverse-surface": "#302f39",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#95002b",
+                    "surface-container-high": "#eae6f4",
+                    "on-surface-variant": "#464555",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-primary-container": "#dad7ff",
+                    "tertiary-fixed": "#ffdadb",
+                    "on-secondary-container": "#007432",
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-bright": "#fcf8ff",
+                    "secondary-fixed": "#6bff8f",
+                    "on-secondary-fixed": "#002109",
+                    "secondary": "#006e2f",
+                    "secondary-container": "#6bff8f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#0f0069",
+                    "tertiary-container": "#bf0f3c",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#4d44e3",
+                    "on-tertiary-container": "#ffd0d2",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary-fixed": "#40000d",
+                    "secondary-fixed-dim": "#4ae176",
+                    "on-surface": "#1b1b24",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e4e1ee",
+                    "surface-container": "#f0ecf9",
+                    "on-secondary-fixed-variant": "#005321",
+                    "inverse-on-surface": "#f3effc",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f2ff",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "surface-variant": "#e4e1ee",
+                    "primary": "#3525cd",
+                    "surface-dim": "#dcd8e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "display": ["Manrope"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+</head>
+<body class="text-on-background min-h-screen flex flex-col bg-surface-container-low">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-white border-outline-variant shadow-sm z-40">
+<div class="flex items-center px-4 py-3 w-full">
+<button class="mr-4 text-black hover:bg-surface-container transition-colors p-2 rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<h1 class="font-headline text-headline-sm font-bold text-black flex-1">Edit Profile</h1>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center px-6 pt-8 pb-32 max-w-xl mx-auto w-full">
+<!-- Profile Picture Section -->
+<div class="relative group mb-10">
+</div>
+<!-- Input Fields Group -->
+<div class="w-full space-y-4">
+<!-- Full Name -->
+<div class="space-y-1.5">
+<label class="text-on-surface-variant text-label-sm font-semibold ml-1">Full Name</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-4 py-4 gap-3 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">person</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-background font-medium w-full placeholder:text-outline-variant" type="text" value="Alexander Nexus">
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-1.5">
+<label class="text-on-surface-variant text-label-sm font-semibold ml-1">Email Address</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-4 py-4 gap-3 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">mail</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-background font-medium w-full placeholder:text-outline-variant" type="email" value="alexander.n@nexus.app">
+</div>
+</div>
+<!-- Username -->
+<div class="space-y-1.5">
+<label class="text-on-surface-variant text-label-sm font-semibold ml-1">Username</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-4 py-4 gap-3 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">alternate_email</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-background font-medium w-full placeholder:text-outline-variant" type="text" value="alex_nexus">
+</div>
+</div>
+</div>
+<!-- Security Item -->
+<div class="w-full mt-8">
+<button class="w-full flex items-center bg-surface-container-high rounded-lg px-4 py-4 gap-3 hover:bg-surface-container transition-colors active:scale-[0.98] duration-150">
+<span class="material-symbols-outlined text-outline">lock</span>
+<span class="text-on-background font-semibold flex-1 text-left">Change Password</span>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</button>
+</div>
+<!-- Danger Zone Link (Optional context-appropriate addition) -->
+</main>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-0 left-0 w-full px-6 py-4 bg-surface-container-lowest z-40">
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all">
+            Save Changes
+        </button>
+</div>
+<!-- BottomNavBar -->
+<script>
+        // Simple micro-interaction for inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('shadow-md');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('shadow-md');
+            });
+        });
+
+        // Save Button Interaction
+        const saveBtn = document.querySelector('button.bg-primary.text-on-primary');
+        saveBtn.addEventListener('click', () => {
+            const originalText = saveBtn.innerText;
+            saveBtn.innerHTML = `<span class="inline-block animate-spin mr-2">◌</span> Saving...`;
+            saveBtn.classList.add('pointer-events-none', 'opacity-80');
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = `<span class="material-symbols-outlined mr-2">check_circle</span> Changes Saved`;
+                saveBtn.classList.replace('bg-primary', 'bg-secondary');
+                
+                setTimeout(() => {
+                    saveBtn.innerText = originalText;
+                    saveBtn.classList.replace('bg-secondary', 'bg-primary');
+                    saveBtn.classList.remove('pointer-events-none', 'opacity-80');
+                }, 2000);
+            }, 1200);
+        });
+    </script>
+<!-- Bottom Sheet Modal -->
+<div class="fixed inset-0 z-[100] flex flex-col justify-end" id="change-password-modal">
+<!-- Scrim/Backdrop -->
+<div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
+<!-- Sheet Content -->
+<div class="relative rounded-t-[2rem] shadow-2xl w-full max-w-xl mx-auto flex flex-col animate-in slide-in-from-bottom duration-300 bg-surface-container-low">
+<!-- Drag Handle -->
+<div class="flex justify-center pt-4 pb-2">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="px-6 pb-8 pt-2">
+
+<div class="space-y-4">
+<!-- Current Password -->
+<div class="space-y-1.5">
+<label class="text-on-surface-variant text-label-sm font-semibold ml-1">Current Password</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-4 py-4 gap-3 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">lock</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-background font-medium w-full placeholder:text-outline-variant" placeholder="Enter current password" type="password"><button type="button" class="text-outline hover:text-primary transition-colors">
+  <span class="material-symbols-outlined block">visibility</span>
+</button>
+</div>
+</div>
+<!-- New Password -->
+<div class="space-y-1.5">
+<label class="text-on-surface-variant text-label-sm font-semibold ml-1">New Password</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-4 py-4 gap-3 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">lock_open</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-background font-medium w-full placeholder:text-outline-variant" placeholder="Enter new password" type="password"><button type="button" class="text-outline hover:text-primary transition-colors">
+  <span class="material-symbols-outlined block">visibility</span>
+</button>
+</div>
+</div>
+<!-- Confirm New Password -->
+<div class="space-y-1.5">
+<label class="text-on-surface-variant text-label-sm font-semibold ml-1">Confirm New Password</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-4 py-4 gap-3 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">verified_user</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-background font-medium w-full placeholder:text-outline-variant" placeholder="Confirm new password" type="password"><button type="button" class="text-outline hover:text-primary transition-colors">
+  <span class="material-symbols-outlined block">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-on-primary py-4 font-bold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all mt-8 rounded-xl">
+        Update Password
+      </button>
+</div>
+</div>
+</div>
+
+
+
+
+
+</body></html>

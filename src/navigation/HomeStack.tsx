@@ -16,6 +16,7 @@ import DebtsScreen from "../screens/DebtsScreen";
 
 // Screens - Stack
 import SettingsScreen from "../screens/SettingsScreen";
+import UpdateProfileScreen from "../screens/UpdateProfileScreen";
 import AddTransactionsScreen from "../screens/AddTransactionsScreen";
 import UpdateTransactionScreen from "../screens/UpdateTransactionScreen";
 import AddCategoryScreen from "../screens/AddCategoryScreen";
@@ -196,6 +197,7 @@ const HomeStack = () => {
       {/* Các màn hình thuộc Group 1 (Detail Screens) */}
       <Stack.Group>
         <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+        <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
         <Stack.Screen
           name="EverydayTransactionScreen"
           component={EverydayTransactionScreen}

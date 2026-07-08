@@ -7,6 +7,7 @@ export interface User {
   password: string;
   currencyId: string;
   theme: 'light' | 'dark' | 'system';
+  username?: string;
 }
 
 // ─── Currency ────────────────────────────────────────────────────────────────
@@ -107,6 +108,7 @@ export type AuthStackParamList = {
 export type HomeStackParamList = {
   TabNavigator: undefined;
   SettingsScreen: undefined;
+  UpdateProfileScreen: undefined;
   AddTransactionsScreen: undefined;
   UpdateTransactionScreen: { expenseId: string };
   AddCategoryScreen: undefined;

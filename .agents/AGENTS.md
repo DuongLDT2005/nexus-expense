@@ -9,6 +9,7 @@ This file contains rules and guidelines that all AI agents must follow when writ
   - [CODING_GUIDE.md](../docs/CODING_GUIDE.md) - Coding guidelines, Hook Pattern (UI/Logic separation), check list, and rules.
   - [LAYOUT_PATTERNS.md](../docs/LAYOUT_PATTERNS.md) - Cấu trúc layout, 4 khuôn mẫu dựng màn hình, và bảng chuyển đổi style Tailwind.
 - **Refer to "zero" business logic:** When writing code or implementing features, you must read the corresponding business flows and logic in the sister project "zero" (located in the sibling directory `../zero`) to ensure correct business flow compliance. Do NOT write markdown links or direct paths pointing to the "zero" project in your code comments or documentation.
+- **Do NOT modify Welcome, Login, Register, Choose Currency screens:** The user has already finalized the logic and UI for: `WelcomeScreen`, `LoginScreen`, `RegisterScreen`, and `ChooseCurrencyScreen`. Under no circumstances should these 4 screens or their corresponding logic hooks (`useWelcomeScreen`, `useLoginScreen`, `useRegisterScreen`, `useChooseCurrencyScreen`) be modified.
 
 ## ⚙️ 2. Build & Environment
 
