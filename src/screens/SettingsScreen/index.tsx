@@ -1,5 +1,11 @@
 import React from "react";
-import { View, TouchableOpacity, ScrollView, Modal } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Modal,
+  Pressable,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import PrimaryView from "../../components/atoms/PrimaryView";
 import PrimaryText from "../../components/atoms/PrimaryText";
@@ -7,6 +13,8 @@ import PrimaryButton from "../../components/atoms/PrimaryButton";
 import Icon from "../../components/atoms/Icons";
 import useColorScheme from "../../hooks/useColorScheme";
 import { useSettingsScreen } from "./useSettingsScreen";
+
+import AppHeader from "../../components/atoms/AppHeader";
 
 export default function SettingsScreen() {
   const navigation = useNavigation<any>();
@@ -24,17 +32,23 @@ export default function SettingsScreen() {
 
   const getThemeText = (themeVal: string) => {
     switch (themeVal) {
-      case 'light': return 'Light';
-      case 'dark': return 'Dark';
-      default: return 'System';
+      case "light":
+        return "Light";
+      case "dark":
+        return "Dark";
+      default:
+        return `System (${isDark ? "Dark" : "Light"})`;
     }
   };
 
   const getThemeIcon = (themeVal: string) => {
     switch (themeVal) {
-      case 'light': return 'sun';
-      case 'dark': return 'moon';
-      default: return 'sun-moon';
+      case "light":
+        return "sun";
+      case "dark":
+        return "moon";
+      default:
+        return "sun-moon";
     }
   };
 
@@ -44,22 +58,8 @@ export default function SettingsScreen() {
       className="flex-grow flex flex-col justify-between bg-surface-low dark:bg-surface-lowest"
       style={{ paddingTop: 0 }}
     >
-      {/* TopAppBar Header */}
-      <View className="w-full bg-surface-lowest dark:bg-surface-low flex-row items-center justify-between px-4 py-4 border-b border-surface-high dark:border-outline-variant/10 shadow-sm">
-        <View className="flex-row items-center gap-4">
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            activeOpacity={0.7}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-surface-low transition-colors duration-150"
-          >
-            <Icon name="arrow-left" size={24} color={isDark ? "#c3c0ff" : "#3525cd"} />
-          </TouchableOpacity>
-          <PrimaryText className="font-headline font-bold text-[22px] tracking-tight text-on-background dark:text-on-surface">
-            Settings
-          </PrimaryText>
-        </View>
-        <View />
-      </View>
+      {/* Header bar */}
+      <AppHeader onPress={() => navigation.goBack()} text="Settings" />
 
       <ScrollView
         className="bg-surface-low dark:bg-surface-lowest"
@@ -90,22 +90,18 @@ export default function SettingsScreen() {
                   <PrimaryText className="text-on-surface-variant dark:text-outline text-sm mt-0.5 font-inter">
                     {user?.email}
                   </PrimaryText>
-                  
+
                   {/* Edit Profile Action Button */}
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("UpdateProfileScreen")}
-                    activeOpacity={0.7}
-                    className="mt-4 flex-row items-center gap-2 px-5 py-2.5 rounded-full border border-primary dark:border-primary-fixed-dim bg-transparent hover:bg-primary/5 active:scale-95 duration-100"
-                  >
-                    <Icon
-                      name="pencil"
-                      size={14}
-                      color={isDark ? "#c3c0ff" : "#3525cd"}
+                  <View className="mt-4">
+                    <PrimaryButton
+                      onPress={() => navigation.navigate("UpdateProfileScreen")}
+                      buttonTitle="Edit Profile"
+                      variant="outline"
+                      size="sm"
+                      icon="pencil"
+                      fullWidth={false}
                     />
-                    <PrimaryText className="text-primary dark:text-primary-fixed-dim font-headline font-bold text-xs">
-                      Edit Profile
-                    </PrimaryText>
-                  </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
@@ -118,7 +114,7 @@ export default function SettingsScreen() {
                 activeOpacity={0.7}
                 className="w-full flex-row items-center gap-4 px-4 py-4 hover:bg-surface-low dark:hover:bg-surface-variant/20 transition-colors"
               >
-                <View className="w-8 h-8 flex items-center justify-center rounded-xl bg-primary-fixed dark:bg-primary/20 text-primary">
+                <View className="w-9 h-9 flex items-center justify-center rounded-xl bg-primary-fixed dark:bg-primary/20 text-primary">
                   <Icon
                     name={getThemeIcon(theme)}
                     size={20}
@@ -133,7 +129,11 @@ export default function SettingsScreen() {
                     <PrimaryText className="text-on-surface-variant dark:text-outline text-sm font-inter">
                       {getThemeText(theme)}
                     </PrimaryText>
-                    <Icon name="chevron-right" size={20} color={isDark ? "#outline" : "#c7c4d8"} />
+                    <Icon
+                      name="chevron-right"
+                      size={20}
+                      color={isDark ? "#918fa1" : "#c7c4d8"}
+                    />
                   </View>
                 </View>
               </TouchableOpacity>
@@ -151,7 +151,7 @@ export default function SettingsScreen() {
                 activeOpacity={0.7}
                 className="w-full flex-row items-center gap-4 px-4 py-4 hover:bg-surface-low dark:hover:bg-surface-variant/20 transition-colors"
               >
-                <View className="w-8 h-8 flex items-center justify-center rounded-xl bg-primary-fixed dark:bg-primary/20 text-primary">
+                <View className="w-9 h-9 flex items-center justify-center rounded-xl bg-primary-fixed dark:bg-primary/20 text-primary">
                   <Icon
                     name="banknote"
                     size={20}
@@ -171,7 +171,11 @@ export default function SettingsScreen() {
                         {currency ? currency.name : "Not set"}
                       </PrimaryText>
                     </View>
-                    <Icon name="chevron-right" size={20} color={isDark ? "#outline" : "#c7c4d8"} />
+                    <Icon
+                      name="chevron-right"
+                      size={20}
+                      color={isDark ? "#918fa1" : "#c7c4d8"}
+                    />
                   </View>
                 </View>
               </TouchableOpacity>
@@ -180,16 +184,13 @@ export default function SettingsScreen() {
 
           {/* Log Out Section */}
           <View className="pt-8 pb-12">
-            <TouchableOpacity
+            <PrimaryButton
               onPress={handleLogout}
-              activeOpacity={0.7}
-              className="w-full flex-row items-center justify-center gap-2 py-4 rounded-2xl bg-error-container/50 dark:bg-error-container/10 border border-error/20 active:scale-95 duration-100 hover:bg-error-container"
-            >
-              <Icon name="power" size={20} color="#ba1a1a" />
-              <PrimaryText className="text-[#ba1a1a] font-headline font-bold text-[15px]">
-                Log Out
-              </PrimaryText>
-            </TouchableOpacity>
+              buttonTitle="Log Out"
+              variant="danger"
+              icon="power"
+              size="md"
+            />
           </View>
         </View>
       </ScrollView>
@@ -200,9 +201,17 @@ export default function SettingsScreen() {
         transparent
         animationType="fade"
         onRequestClose={() => setThemeSelectionVisible(false)}
+        statusBarTranslucent
       >
-        <View className="flex-1 justify-center items-center bg-black/60 px-6">
-          <View className="w-full max-w-[300px] bg-surface-lowest dark:bg-surface-low border border-surface-high dark:border-outline-variant/10 rounded-3xl p-6 shadow-2xl gap-5">
+        <Pressable
+          className="flex-1 bg-black/60 justify-center items-center p-6"
+          style={{ width: "100%", height: "100%" }}
+          onPress={() => setThemeSelectionVisible(false)}
+        >
+          <Pressable
+            className="w-full max-w-[300px] bg-surface-lowest dark:bg-surface-low border border-surface-high dark:border-outline-variant/10 rounded-3xl p-6 shadow-2xl gap-5"
+            onPress={(e) => e.stopPropagation()}
+          >
             <View className="items-center">
               <PrimaryText className="font-headline font-bold text-lg text-on-surface">
                 Appearance Theme
@@ -210,7 +219,7 @@ export default function SettingsScreen() {
             </View>
 
             <View className="gap-2">
-              {(['light', 'dark', 'system'] as const).map((t) => {
+              {(["light", "dark", "system"] as const).map((t) => {
                 const isSelected = theme === t;
                 return (
                   <TouchableOpacity
@@ -227,16 +236,30 @@ export default function SettingsScreen() {
                       <Icon
                         name={getThemeIcon(t)}
                         size={18}
-                        color={isSelected ? (isDark ? "#c3c0ff" : "#3525cd") : "#777587"}
+                        color={
+                          isSelected
+                            ? isDark
+                              ? "#c3c0ff"
+                              : "#3525cd"
+                            : "#777587"
+                        }
                       />
-                      <PrimaryText className={`font-inter text-sm font-semibold ${
-                        isSelected ? "text-primary dark:text-primary-fixed-dim" : "text-on-surface-variant"
-                      }`}>
+                      <PrimaryText
+                        className={`font-inter text-sm font-semibold ${
+                          isSelected
+                            ? "text-primary dark:text-primary-fixed-dim"
+                            : "text-on-surface-variant"
+                        }`}
+                      >
                         {getThemeText(t)}
                       </PrimaryText>
                     </View>
                     {isSelected && (
-                      <Icon name="check" size={16} color={isDark ? "#c3c0ff" : "#3525cd"} />
+                      <Icon
+                        name="check"
+                        size={16}
+                        color={isDark ? "#c3c0ff" : "#3525cd"}
+                      />
                     )}
                   </TouchableOpacity>
                 );
@@ -246,10 +269,10 @@ export default function SettingsScreen() {
             <PrimaryButton
               onPress={() => setThemeSelectionVisible(false)}
               buttonTitle="Close"
-              variant="outline"
+              variant="primary"
             />
-          </View>
-        </View>
+          </Pressable>
+        </Pressable>
       </Modal>
     </PrimaryView>
   );

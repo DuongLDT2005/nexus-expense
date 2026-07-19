@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   View,
-  TextInput,
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
@@ -30,6 +29,14 @@ export default function ChooseCurrencyScreen() {
   } = useChooseCurrencyScreen();
 
   const isDark = useColorScheme() === "dark";
+
+  const sortedCurrencies = useMemo(() => {
+    if (!selectedCurrency) return filteredCurrencies;
+    const selected = filteredCurrencies.find((c) => c.id === selectedCurrency.id);
+    if (!selected) return filteredCurrencies;
+    const remaining = filteredCurrencies.filter((c) => c.id !== selectedCurrency.id);
+    return [selected, ...remaining];
+  }, [filteredCurrencies, selectedCurrency]);
 
   return (
     <PrimaryView
@@ -81,7 +88,7 @@ export default function ChooseCurrencyScreen() {
           </View>
         ) : (
           <View className="gap-3">
-            {filteredCurrencies.map((curr) => {
+            {sortedCurrencies.map((curr) => {
               const isSelected = selectedCurrency?.id === curr.id;
               return (
                 <TouchableOpacity
@@ -102,7 +109,7 @@ export default function ChooseCurrencyScreen() {
                         className={`w-12 h-12 rounded-full items-center justify-center ${
                           isSelected
                             ? "bg-primary"
-                            : "bg-surface-container-high"
+                            : "bg-surface-high"
                         }`}
                       >
                         <PrimaryText
@@ -142,10 +149,10 @@ export default function ChooseCurrencyScreen() {
       </ScrollView>
 
       {/* Floating Continue button */}
-      <View className="absolute bottom-0 left-0 right-0 p-6 bg-white border-t border-outline-variant/10">
+      <View className="absolute bottom-0 left-0 right-0 p-6 bg-surface-lowest border-t border-outline-variant/10">
         <PrimaryButton
           onPress={handleCurrencySubmit}
-          buttonTitle="Continue"
+          buttonTitle={isFromSettings ? "Update Currency" : "Continue"}
           disabled={!selectedCurrency}
           size="lg"
         />

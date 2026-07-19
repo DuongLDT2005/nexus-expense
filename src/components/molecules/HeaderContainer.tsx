@@ -55,7 +55,7 @@ const HeaderContainer: React.FC<HeaderContainerProps> = ({ headerText }) => {
 
   return (
     <View
-      className="flex-row items-center justify-between bg-white dark:bg-inverse-surface px-4"
+      className="flex-row items-center justify-between bg-surface-lowest px-4"
       style={{
         paddingTop: insets.top + 8,
         paddingBottom: 14,

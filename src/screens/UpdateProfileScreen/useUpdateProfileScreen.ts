@@ -17,7 +17,6 @@ export const useUpdateProfileScreen = () => {
   // Profile Edit fields
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [profileError, setProfileError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -26,7 +25,6 @@ export const useUpdateProfileScreen = () => {
     if (user) {
       setFullName(user.fullName || '');
       setEmail(user.email || '');
-      setUsername(user.username || '');
     }
   }, [user]);
 
@@ -47,7 +45,6 @@ export const useUpdateProfileScreen = () => {
 
     const trimmedName = fullName.trim();
     const trimmedEmail = email.trim();
-    const trimmedUsername = username.trim();
 
     // 1. Validations
     const nameVal = nameSchema.safeParse(trimmedName);
@@ -64,11 +61,6 @@ export const useUpdateProfileScreen = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmedEmail)) {
       setProfileError('Invalid email format.');
-      return;
-    }
-
-    if (trimmedUsername && trimmedUsername.length < 3) {
-      setProfileError('Username must be at least 3 characters.');
       return;
     }
 
@@ -91,14 +83,12 @@ export const useUpdateProfileScreen = () => {
       await updateUserById(user.id, {
         fullName: trimmedName,
         email: trimmedEmail,
-        username: trimmedUsername || undefined,
       });
 
       // 4. Dispatch update to Redux
       dispatch(updateUser({
         fullName: trimmedName,
         email: trimmedEmail,
-        username: trimmedUsername || undefined,
       }));
 
       Alert.alert('Success', 'Profile updated successfully!', [
@@ -109,7 +99,7 @@ export const useUpdateProfileScreen = () => {
     } finally {
       setIsSaving(false);
     }
-  }, [fullName, email, username, user, dispatch, navigation]);
+  }, [fullName, email, user, dispatch, navigation]);
 
   // Password Saving
   const handleSavePassword = useCallback(async () => {
@@ -179,8 +169,6 @@ export const useUpdateProfileScreen = () => {
     setFullName,
     email,
     setEmail,
-    username,
-    setUsername,
     profileError,
     isSaving,
     handleSaveProfile,

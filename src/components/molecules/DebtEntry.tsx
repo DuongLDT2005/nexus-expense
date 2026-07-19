@@ -119,7 +119,7 @@ const DebtEntry: React.FC<DebtEntryProps> = ({
           </View>
 
           {/* Transaction Type Picker (Toggles) */}
-          <View className="flex-row p-1 bg-surface-container-high rounded-lg mb-6">
+          <View className="flex-row p-1 bg-surface-high rounded-lg mb-6">
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => handleToggleType("Borrow")}
@@ -247,7 +247,7 @@ const DebtEntry: React.FC<DebtEntryProps> = ({
         </ScrollView>
       </KeyboardAvoidingView>
 
-      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 dark:bg-inverse-surface/90 border-t border-surface-high dark:border-outline-variant">
+      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 border-t border-surface-high dark:border-outline-variant">
         <PrimaryButton
           buttonTitle={isAddButton ? "Add Debt" : "Update Debt"}
           onPress={handleSave}

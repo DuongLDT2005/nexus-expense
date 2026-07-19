@@ -97,8 +97,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
       if (variant === "outline") {
         return {
           backgroundColor: isDark ? "transparent" : "#fafafa",
-          borderWidth: 1,
-          borderStyle: "dashed" as const,
+          borderWidth: 0.5,
           borderColor: isDark ? "#555" : "#c0bfca",
         };
       }

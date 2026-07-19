@@ -2,7 +2,7 @@
   {
     "id": "debt-bank-1",
     "description": "Home upgrade loan",
-    "amount": 15000,
+    "amount": 15000000,
     "debtorId": "debtor-bank",
     "userId": "2",
     "date": "2026-07-01",
@@ -11,7 +11,7 @@
   {
     "id": "debt-bob-1",
     "description": "Borrowed for petrol",
-    "amount": 300,
+    "amount": 300000,
     "debtorId": "debtor-bob",
     "userId": "2",
     "date": "2026-07-15",
@@ -20,7 +20,7 @@
   {
     "id": "Ef_pFcIvU_0H83Vuj9QuDzux",
     "description": "Lent for parking",
-    "amount": 10,
+    "amount": 100000,
     "debtorId": "uudjA3Kz4oKLDfgBDWA9HzyM",
     "userId": "2",
     "date": "2026-07-18T19:29:00",
@@ -29,7 +29,7 @@
   {
     "id": "TYb2CN0CUUYwAoGoZIPX4N7D",
     "description": "Borrowed for lunch",
-    "amount": 15,
+    "amount": 35000,
     "debtorId": "debtor-alice",
     "userId": "2",
     "date": "2026-07-19T19:41:54",
@@ -38,7 +38,7 @@
   {
     "id": "kbHzEfy4UHb1ZzFyknNMM_8w",
     "description": "Lent for coffee",
-    "amount": 5,
+    "amount": 15000,
     "debtorId": "debtor-alice",
     "userId": "2",
     "date": "2026-07-18T19:42:00",

@@ -86,25 +86,16 @@ const CustomTabBar = ({
 
   return (
     <View
+      className="bg-surface-lowest border-t border-surface-high flex-row justify-around items-center px-4 overflow-hidden"
       style={{
-        backgroundColor: isDark
-          ? "#302f39" // --inverse-surface / surface-lowest color
-          : "#ffffff",
-        borderTopWidth: 1,
-        borderTopColor: isDark ? "rgba(199, 196, 216, 0.2)" : "#eae6f4",
         shadowColor: "#000000",
         shadowOffset: { width: 0, height: -4 },
         shadowOpacity: 0.08,
         shadowRadius: 12,
         elevation: 8,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-        paddingHorizontal: 16,
         paddingBottom: bottomPadding,
         paddingTop: 8,
         height: 64 + bottomPadding,
-        overflow: "hidden",
       }}
     >
       {state.routes.map((route, index) => {

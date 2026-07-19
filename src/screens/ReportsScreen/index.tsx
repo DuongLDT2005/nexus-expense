@@ -1,5 +1,11 @@
 import React from "react";
-import { View, TouchableOpacity, ScrollView, Modal } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Modal,
+  Pressable,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Svg, { Circle } from "react-native-svg";
 import dayjs from "dayjs";
@@ -11,7 +17,9 @@ import CustomLoader from "../../components/atoms/CustomLoader";
 import EmptyState from "../../components/atoms/EmptyState";
 import useColorScheme from "../../hooks/useColorScheme";
 import { useReportsScreen } from "./useReportsScreen";
-import { formatCurrency } from "../../utils/numberUtils";
+import { formatCurrency, formatWithSymbol } from "../../utils/numberUtils";
+import AppHeader from "../../components/atoms/AppHeader";
+import HeaderContainer from "../../components/molecules/HeaderContainer";
 
 export default function ReportsScreen() {
   const navigation = useNavigation<any>();
@@ -36,6 +44,7 @@ export default function ReportsScreen() {
     refetch,
     handlePrevMonth,
     handleNextMonth,
+    currency,
   } = useReportsScreen();
 
   const userInitials = user?.fullName
@@ -73,28 +82,12 @@ export default function ReportsScreen() {
   return (
     <PrimaryView
       useSidePadding={false}
+      useBottomPadding={false}
       className="flex-grow flex flex-col justify-between bg-surface-low dark:bg-surface-lowest"
       style={{ paddingTop: 0 }}
     >
       {/* Fixed TopAppBar Header */}
-      <View className="w-full bg-white dark:bg-surface-low border-b border-surface-high dark:border-outline-variant/10 flex-row justify-between items-center px-4 h-16 shadow-sm">
-        <View className="flex-row items-center gap-3">
-          <View className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <PrimaryText className="text-white font-bold text-sm">{userInitials}</PrimaryText>
-          </View>
-          <PrimaryText className="font-bold text-2xl tracking-tight text-primary dark:text-primary-fixed-dim">
-            Reports
-          </PrimaryText>
-        </View>
-
-        <TouchableOpacity
-          onPress={() => navigation.navigate("SettingsScreen")}
-          activeOpacity={0.7}
-          className="flex items-center justify-center p-2 rounded-full hover:bg-surface-container"
-        >
-          <Icon name="settings" size={24} color={isDark ? "#outline" : "#464555"} />
-        </TouchableOpacity>
-      </View>
+      <HeaderContainer headerText="Reports" />
 
       <ScrollView
         className="bg-surface-low dark:bg-surface-lowest flex-1"
@@ -113,13 +106,12 @@ export default function ReportsScreen() {
             <PrimaryText className="text-on-surface-variant text-center font-inter max-w-[280px]">
               {error}
             </PrimaryText>
-            <TouchableOpacity
+            <PrimaryButton
               onPress={refetch}
-              activeOpacity={0.7}
-              className="bg-primary px-6 py-3 rounded-full shadow-sm"
-            >
-              <PrimaryText className="text-on-primary font-bold">Retry</PrimaryText>
-            </TouchableOpacity>
+              buttonTitle="Retry"
+              size="md"
+              fullWidth={false}
+            />
           </View>
         ) : (
           <View className="px-4 gap-6">
@@ -145,33 +137,60 @@ export default function ReportsScreen() {
                       onPress={handlePrevMonth}
                       className="w-10 h-10 rounded-xl bg-surface-lowest dark:bg-surface-low border border-surface-high dark:border-outline-variant/10 items-center justify-center"
                     >
-                      <Icon name="chevron-left" size={20} color={isDark ? "#c3c0ff" : "#3525cd"} />
+                      <Icon
+                        name="chevron-left"
+                        size={20}
+                        color={isDark ? "#c3c0ff" : "#4f46e5"}
+                      />
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={handleNextMonth}
                       className="w-10 h-10 rounded-xl bg-surface-lowest dark:bg-surface-low border border-surface-high dark:border-outline-variant/10 items-center justify-center"
                     >
-                      <Icon name="chevron-right" size={20} color={isDark ? "#c3c0ff" : "#3525cd"} />
+                      <Icon
+                        name="chevron-right"
+                        size={20}
+                        color={isDark ? "#c3c0ff" : "#4f46e5"}
+                      />
                     </TouchableOpacity>
                   </View>
                 </View>
 
                 {/* Statistics Cards */}
                 <View className="flex-row gap-4 w-full">
-                  <View className="flex-1 bg-white dark:bg-surface-low p-4 rounded-xl border border-surface-high dark:border-outline-variant/10 shadow-sm">
-                    <PrimaryText className="text-on-surface-variant dark:text-outline text-[10px] font-bold uppercase tracking-wider mb-1">
+                  {/* Total card */}
+                  <View className="flex-1 rounded-2xl px-4 py-3.5 bg-white dark:bg-surface-variant/20 border border-surface-high shadow-sm">
+                    <PrimaryText
+                      size={10}
+                      weight="bold"
+                      className="text-primary tracking-widest uppercase mb-1"
+                    >
                       Total
                     </PrimaryText>
-                    <PrimaryText className="text-xl font-bold text-on-surface">
-                      {currencySymbol}{formatCurrency(totalSpending)}
+                    <PrimaryText size={22} weight="bold" variant="number">
+                      {formatWithSymbol(
+                        totalSpending,
+                        currencySymbol,
+                        currency?.code,
+                      )}
                     </PrimaryText>
                   </View>
-                  <View className="flex-1 bg-white dark:bg-surface-low p-4 rounded-xl border border-surface-high dark:border-outline-variant/10 shadow-sm">
-                    <PrimaryText className="text-on-surface-variant dark:text-outline text-[10px] font-bold uppercase tracking-wider mb-1">
+
+                  {/* Avg/Day card */}
+                  <View className="flex-1 rounded-2xl px-4 py-3.5 bg-white dark:bg-surface-variant/20 border border-surface-high shadow-sm">
+                    <PrimaryText
+                      size={10}
+                      weight="bold"
+                      className="text-primary tracking-widest uppercase mb-1"
+                    >
                       Avg/Day
                     </PrimaryText>
-                    <PrimaryText className="text-xl font-bold text-on-surface">
-                      {currencySymbol}{formatCurrency(avgSpendingPerDay)}
+                    <PrimaryText size={22} weight="bold" variant="number">
+                      {formatWithSymbol(
+                        avgSpendingPerDay,
+                        currencySymbol,
+                        currency?.code,
+                      )}
                     </PrimaryText>
                   </View>
                 </View>
@@ -179,12 +198,16 @@ export default function ReportsScreen() {
             </View>
 
             {/* Daily Activity Heatmap Card */}
-            <View className="bg-white dark:bg-surface-low p-6 rounded-2xl shadow-sm border border-surface-high dark:border-outline-variant/10 gap-5">
+            <View className="bg-surface-lowest dark:bg-surface-low p-6 rounded-2xl shadow-sm border border-surface-high dark:border-outline-variant/10 gap-5">
               <View className="flex-row items-center justify-between mb-2">
                 <PrimaryText className="text-lg font-bold text-on-surface dark:text-on-surface">
                   Daily Activity
                 </PrimaryText>
-                <Icon name="calendar" size={20} color={isDark ? "#outline" : "#777587"} />
+                <Icon
+                  name="calendar"
+                  size={20}
+                  color={isDark ? "#918fa1" : "#777587"}
+                />
               </View>
 
               {/* Grid layout */}
@@ -225,13 +248,15 @@ export default function ReportsScreen() {
                     >
                       <View
                         className={`w-full h-full rounded-lg items-center justify-center ${getIntensityClass(
-                          day.intensity
+                          day.intensity,
                         )}`}
                       >
                         <PrimaryText
                           style={{ fontSize: 9 }}
                           className={`font-semibold ${
-                            day.intensity >= 3 ? "text-white" : "text-on-surface-variant"
+                            day.intensity >= 3
+                              ? "text-white"
+                              : "text-on-surface-variant"
                           }`}
                         >
                           {day.dayNum}
@@ -262,14 +287,14 @@ export default function ReportsScreen() {
 
             {/* Spending Distribution Card */}
             {categoryBreakdown.length === 0 ? (
-              <View className="bg-white dark:bg-surface-low p-6 rounded-2xl shadow-sm border border-surface-high dark:border-outline-variant/10">
+              <View className="bg-surface-lowest dark:bg-surface-low p-6 rounded-2xl shadow-sm border border-surface-high dark:border-outline-variant/10">
                 <EmptyState
                   type="Insights"
                   message="No category breakdown details for this month."
                 />
               </View>
             ) : (
-              <View className="bg-white dark:bg-surface-low p-6 rounded-2xl shadow-sm border border-surface-high dark:border-outline-variant/10 gap-6">
+              <View className="bg-surface-lowest dark:bg-surface-low p-6 rounded-2xl shadow-sm border border-surface-high dark:border-outline-variant/10 gap-6">
                 <PrimaryText className="text-lg font-bold text-on-surface">
                   Spending Distribution
                 </PrimaryText>
@@ -277,7 +302,12 @@ export default function ReportsScreen() {
                 <View className="flex-col items-center gap-8 mt-2">
                   {/* Circle SVG ring */}
                   <View className="relative w-48 h-48 items-center justify-center flex">
-                    <Svg width="192" height="192" viewBox="0 0 100 100" className="transform -rotate-90">
+                    <Svg
+                      width="192"
+                      height="192"
+                      viewBox="0 0 100 100"
+                      className="transform -rotate-90"
+                    >
                       {/* Background circle */}
                       <Circle
                         cx="50"
@@ -290,7 +320,9 @@ export default function ReportsScreen() {
 
                       {/* Segments mapping */}
                       {categoryBreakdown.map((item) => {
-                        const dashOffset = svgCircumference - (item.percentage / 100) * svgCircumference;
+                        const dashOffset =
+                          svgCircumference -
+                          (item.percentage / 100) * svgCircumference;
                         const angle = (accumulatedPercentage / 100) * 360;
                         accumulatedPercentage += item.percentage;
 
@@ -319,7 +351,11 @@ export default function ReportsScreen() {
                         Spent
                       </PrimaryText>
                       <PrimaryText className="text-xl font-bold text-on-surface">
-                        {currencySymbol}{formatCurrency(totalSpending)}
+                        {formatWithSymbol(
+                          totalSpending,
+                          currencySymbol,
+                          currency?.code,
+                        )}
                       </PrimaryText>
                     </View>
                   </View>
@@ -332,6 +368,10 @@ export default function ReportsScreen() {
                         onPress={() =>
                           navigation.navigate("CategoryTransactionScreen", {
                             categoryId: item.id,
+                            categoryName: item.name,
+                            categoryColor: item.color,
+                            categoryIcon: item.icon,
+                            yearMonth: selectedMonth,
                           })
                         }
                         activeOpacity={0.7}
@@ -347,8 +387,12 @@ export default function ReportsScreen() {
                           </PrimaryText>
                         </View>
                         <View className="items-end">
-                          <PrimaryText className="font-bold text-sm text-on-surface">
-                            {currencySymbol}{formatCurrency(item.amount)}
+                          <PrimaryText className="font-bold text-sm text-primary">
+                            {formatWithSymbol(
+                              item.amount,
+                              currencySymbol,
+                              currency?.code,
+                            )}
                           </PrimaryText>
                           <PrimaryText className="text-[10px] text-on-surface-variant dark:text-outline font-bold uppercase mt-0.5">
                             {item.percentage}%
@@ -370,9 +414,17 @@ export default function ReportsScreen() {
         transparent
         animationType="fade"
         onRequestClose={() => setMonthPickerVisible(false)}
+        statusBarTranslucent
       >
-        <View className="flex-1 justify-center items-center bg-black/60 px-6">
-          <View className="w-full max-w-[300px] bg-white dark:bg-surface-low border border-surface-high dark:border-outline-variant/10 rounded-3xl p-6 shadow-2xl gap-5">
+        <Pressable
+          className="flex-1 bg-black/60 justify-center items-center p-6"
+          style={{ width: "100%", height: "100%" }}
+          onPress={() => setMonthPickerVisible(false)}
+        >
+          <Pressable
+            className="w-full max-w-[300px] bg-surface-lowest dark:bg-surface-low border border-surface-high dark:border-outline-variant/10 rounded-3xl p-6 shadow-2xl gap-5"
+            onPress={(e) => e.stopPropagation()}
+          >
             <View className="items-center">
               <PrimaryText className="font-headline font-bold text-lg text-on-surface">
                 Select Month
@@ -399,13 +451,19 @@ export default function ReportsScreen() {
                   >
                     <PrimaryText
                       className={`font-inter text-sm font-semibold ${
-                        isSelected ? "text-primary font-bold" : "text-on-surface-variant"
+                        isSelected
+                          ? "text-primary font-bold"
+                          : "text-on-surface-variant"
                       }`}
                     >
                       {displayLabel}
                     </PrimaryText>
                     {isSelected && (
-                      <Icon name="check" size={16} color={isDark ? "#c3c0ff" : "#3525cd"} />
+                      <Icon
+                        name="check"
+                        size={16}
+                        color={isDark ? "#c3c0ff" : "#3525cd"}
+                      />
                     )}
                   </TouchableOpacity>
                 );
@@ -417,8 +475,8 @@ export default function ReportsScreen() {
               buttonTitle="Cancel"
               variant="outline"
             />
-          </View>
-        </View>
+          </Pressable>
+        </Pressable>
       </Modal>
     </PrimaryView>
   );

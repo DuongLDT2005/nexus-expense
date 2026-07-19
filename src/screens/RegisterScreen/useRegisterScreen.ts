@@ -74,7 +74,7 @@ export const useRegisterScreen = () => {
         email: email.trim(),
         password,
         currencyId: '',
-        theme: 'system',
+        theme: 'light',
       };
 
       await request<User>('/users', {

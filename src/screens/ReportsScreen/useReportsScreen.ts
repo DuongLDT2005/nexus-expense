@@ -123,6 +123,14 @@ export const useReportsScreen = () => {
       }
     });
 
+    // Find the maximum daily amount in this month
+    let maxDailyAmount = 0;
+    dailyMap.forEach((amount) => {
+      if (amount > maxDailyAmount) {
+        maxDailyAmount = amount;
+      }
+    });
+
     // Generate each day and assign intensity level based on thresholds
     for (let day = 1; day <= daysInMonth; day++) {
       const dayAmount = dailyMap.get(day) || 0;
@@ -130,10 +138,11 @@ export const useReportsScreen = () => {
       const dateStr = `${selectedMonth}-${padDayStr}`;
 
       let intensity: 0 | 1 | 2 | 3 | 4 = 0;
-      if (dayAmount > 0) {
-        if (dayAmount <= 200) intensity = 1;
-        else if (dayAmount <= 500) intensity = 2;
-        else if (dayAmount <= 1500) intensity = 3;
+      if (dayAmount > 0 && maxDailyAmount > 0) {
+        const ratio = dayAmount / maxDailyAmount;
+        if (ratio <= 0.25) intensity = 1;
+        else if (ratio <= 0.50) intensity = 2;
+        else if (ratio <= 0.75) intensity = 3;
         else intensity = 4;
       }
 
@@ -198,5 +207,6 @@ export const useReportsScreen = () => {
     refetch: fetchExpenses,
     handlePrevMonth,
     handleNextMonth,
+    currency,
   };
 };
