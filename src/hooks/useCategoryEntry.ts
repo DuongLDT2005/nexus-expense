@@ -54,17 +54,15 @@ export const useCategoryEntry = (type: 'Add' | 'Update', routeParams?: any) => {
 
   const toggleCategorySelection = useCallback((category: DefaultCategorySuggestion) => {
     if (selectedCategoryNames.has(category.name)) {
-      setSelectedCategories(prev => prev.filter(item => item.name !== category.name));
-      if (selectedCategories.length === 1) {
-        setCategoryName('');
-      }
+      setSelectedCategories([]);
+      setCategoryName('');
     } else {
-      setSelectedCategories(prev => [...prev, category]);
+      setSelectedCategories([category]);
       setCategoryName(category.name);
       setSelectedIcon(category.icon);
       setSelectedColor(category.color);
     }
-  }, [selectedCategoryNames, selectedCategories.length]);
+  }, [selectedCategoryNames]);
 
   const isValid = categoryName.trim().length > 0 || selectedCategories.length > 0;
 
