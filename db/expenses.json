@@ -60,8 +60,7 @@
     "title": "Pho Bo Hanoi",
     "amount": 85000,
     "description": "Lunch with colleagues",
-    "date": "2026-07-07",
-    "time": "12:15"
+    "date": "2026-07-07T12:15:00"
   },
   {
     "id": "exp-u1-002",
@@ -70,8 +69,7 @@
     "title": "Circle K",
     "amount": 45000,
     "description": "Snacks and drinks",
-    "date": "2026-07-07",
-    "time": "16:30"
+    "date": "2026-07-07T16:30:00"
   },
   {
     "id": "exp-u1-003",
@@ -80,8 +78,7 @@
     "title": "Gong Cha",
     "amount": 55000,
     "description": "Bubble tea",
-    "date": "2026-07-06",
-    "time": "15:00"
+    "date": "2026-07-06T15:00:00"
   },
   {
     "id": "exp-u1-004",
@@ -90,8 +87,7 @@
     "title": "KFC",
     "amount": 120000,
     "description": "Dinner",
-    "date": "2026-07-05",
-    "time": "18:45"
+    "date": "2026-07-05T18:45:00"
   },
   {
     "id": "exp-u1-005",
@@ -100,8 +96,7 @@
     "title": "Highlands Coffee",
     "amount": 75000,
     "description": "Morning coffee",
-    "date": "2026-07-04",
-    "time": "08:20"
+    "date": "2026-07-04T08:20:00"
   },
   {
     "id": "exp-u1-006",
@@ -110,8 +105,7 @@
     "title": "Uniqlo",
     "amount": 490000,
     "description": "Summer T-shirt",
-    "date": "2026-07-06",
-    "time": "14:10"
+    "date": "2026-07-06T14:10:00"
   },
   {
     "id": "exp-u1-007",
@@ -120,8 +114,7 @@
     "title": "Shopee",
     "amount": 235000,
     "description": "Phone case and cable",
-    "date": "2026-07-04",
-    "time": "21:05"
+    "date": "2026-07-04T21:05:00"
   },
   {
     "id": "exp-u1-008",
@@ -130,8 +123,7 @@
     "title": "Vinmart",
     "amount": 310000,
     "description": "Weekly groceries",
-    "date": "2026-07-03",
-    "time": "11:30"
+    "date": "2026-07-03T11:30:00"
   },
   {
     "id": "exp-u1-009",
@@ -140,8 +132,7 @@
     "title": "Grab Bike",
     "amount": 35000,
     "description": "To office",
-    "date": "2026-07-07",
-    "time": "07:50"
+    "date": "2026-07-07T07:50:00"
   },
   {
     "id": "exp-u1-010",
@@ -150,8 +141,7 @@
     "title": "Grab Car",
     "amount": 95000,
     "description": "Airport pickup",
-    "date": "2026-07-05",
-    "time": "09:00"
+    "date": "2026-07-05T09:00:00"
   },
   {
     "id": "exp-u1-011",
@@ -160,8 +150,7 @@
     "title": "Parking fee",
     "amount": 20000,
     "description": "Shopping mall",
-    "date": "2026-07-03",
-    "time": "13:45"
+    "date": "2026-07-03T13:45:00"
   },
   {
     "id": "exp-u1-012",
@@ -170,8 +159,7 @@
     "title": "Netflix",
     "amount": 180000,
     "description": "Monthly subscription",
-    "date": "2026-07-01",
-    "time": "09:00"
+    "date": "2026-07-01T09:00:00"
   },
   {
     "id": "exp-u1-013",
@@ -180,8 +168,7 @@
     "title": "CGV Cinema",
     "amount": 150000,
     "description": "Movie night",
-    "date": "2026-07-06",
-    "time": "19:30"
+    "date": "2026-07-06T19:30:00"
   },
   {
     "id": "exp-u1-014",
@@ -190,8 +177,7 @@
     "title": "Pharmacy",
     "amount": 65000,
     "description": "Cold medicine",
-    "date": "2026-07-02",
-    "time": "10:15"
+    "date": "2026-07-02T10:15:00"
   },
   {
     "id": "exp-u1-015",
@@ -200,8 +186,7 @@
     "title": "Doctor visit",
     "amount": 250000,
     "description": "General checkup",
-    "date": "2026-07-01",
-    "time": "14:00"
+    "date": "2026-07-01T14:00:00"
   },
   {
     "id": "exp-u1-016",
@@ -210,8 +195,7 @@
     "title": "Bun Bo Hue",
     "amount": 65000,
     "description": "Breakfast",
-    "date": "2026-06-30",
-    "time": "07:30"
+    "date": "2026-06-30T07:30:00"
   },
   {
     "id": "exp-u1-017",
@@ -220,8 +204,7 @@
     "title": "The Coffee House",
     "amount": 85000,
     "description": "Work from cafe",
-    "date": "2026-06-28",
-    "time": "10:00"
+    "date": "2026-06-28T10:00:00"
   },
   {
     "id": "exp-u1-018",
@@ -230,8 +213,7 @@
     "title": "Lazada",
     "amount": 450000,
     "description": "Bluetooth earbuds",
-    "date": "2026-06-25",
-    "time": "22:10"
+    "date": "2026-06-25T22:10:00"
   },
   {
     "id": "exp-u1-019",
@@ -240,8 +222,7 @@
     "title": "Be Car",
     "amount": 78000,
     "description": "Office commute",
-    "date": "2026-06-27",
-    "time": "08:00"
+    "date": "2026-06-27T08:00:00"
   },
   {
     "id": "exp-u1-020",
@@ -250,8 +231,7 @@
     "title": "Spotify",
     "amount": 59000,
     "description": "Monthly subscription",
-    "date": "2026-06-01",
-    "time": "09:00"
+    "date": "2026-06-01T09:00:00"
   },
   {
     "id": "exp-u2-001",
@@ -260,8 +240,7 @@
     "title": "Panda Express",
     "amount": 95000,
     "description": "Lunch",
-    "date": "2026-07-07",
-    "time": "12:30"
+    "date": "2026-07-07T12:30:00"
   },
   {
     "id": "exp-u2-002",
@@ -270,8 +249,7 @@
     "title": "Family Mart",
     "amount": 62000,
     "description": "Convenience store",
-    "date": "2026-07-06",
-    "time": "17:20"
+    "date": "2026-07-06T17:20:00"
   },
   {
     "id": "exp-u2-003",
@@ -280,8 +258,7 @@
     "title": "Domino's Pizza",
     "amount": 185000,
     "description": "Dinner for two",
-    "date": "2026-07-05",
-    "time": "19:00"
+    "date": "2026-07-05T19:00:00"
   },
   {
     "id": "exp-u2-004",
@@ -290,8 +267,7 @@
     "title": "Trung Nguyen Coffee",
     "amount": 45000,
     "description": "Morning coffee",
-    "date": "2026-07-04",
-    "time": "07:45"
+    "date": "2026-07-04T07:45:00"
   },
   {
     "id": "exp-u2-005",
@@ -300,8 +276,7 @@
     "title": "AEON Mall",
     "amount": 720000,
     "description": "Clothes shopping",
-    "date": "2026-07-06",
-    "time": "15:30"
+    "date": "2026-07-06T15:30:00"
   },
   {
     "id": "exp-u2-006",
@@ -310,8 +285,7 @@
     "title": "Tiki",
     "amount": 340000,
     "description": "Books and stationery",
-    "date": "2026-07-03",
-    "time": "20:00"
+    "date": "2026-07-03T20:00:00"
   },
   {
     "id": "exp-u2-007",
@@ -320,8 +294,7 @@
     "title": "Grab Bike",
     "amount": 28000,
     "description": "To meeting",
-    "date": "2026-07-07",
-    "time": "08:10"
+    "date": "2026-07-07T08:10:00"
   },
   {
     "id": "exp-u2-008",
@@ -330,8 +303,7 @@
     "title": "Xanh SM",
     "amount": 115000,
     "description": "City ride",
-    "date": "2026-07-05",
-    "time": "11:00"
+    "date": "2026-07-05T11:00:00"
   },
   {
     "id": "exp-u2-009",
@@ -340,8 +312,7 @@
     "title": "Fuel top-up",
     "amount": 200000,
     "description": "Motorbike fuel",
-    "date": "2026-07-02",
-    "time": "16:50"
+    "date": "2026-07-02T16:50:00"
   },
   {
     "id": "exp-u2-010",
@@ -350,8 +321,7 @@
     "title": "Electricity bill",
     "amount": 550000,
     "description": "June electricity",
-    "date": "2026-07-05",
-    "time": "09:30"
+    "date": "2026-07-05T09:30:00"
   },
   {
     "id": "exp-u2-011",
@@ -360,8 +330,7 @@
     "title": "Water bill",
     "amount": 120000,
     "description": "June water",
-    "date": "2026-07-05",
-    "time": "09:35"
+    "date": "2026-07-05T09:35:00"
   },
   {
     "id": "exp-u2-012",
@@ -370,8 +339,7 @@
     "title": "Internet bill",
     "amount": 280000,
     "description": "Monthly fiber",
-    "date": "2026-07-01",
-    "time": "10:00"
+    "date": "2026-07-01T10:00:00"
   },
   {
     "id": "exp-u2-013",
@@ -380,8 +348,7 @@
     "title": "Train ticket",
     "amount": 450000,
     "description": "HCM to Da Nang",
-    "date": "2026-07-03",
-    "time": "08:00"
+    "date": "2026-07-03T08:00:00"
   },
   {
     "id": "exp-u2-014",
@@ -390,8 +357,7 @@
     "title": "Hotel booking",
     "amount": 1200000,
     "description": "2 nights Da Nang",
-    "date": "2026-07-03",
-    "time": "08:05"
+    "date": "2026-07-03T08:05:00"
   },
   {
     "id": "exp-u2-015",
@@ -400,8 +366,7 @@
     "title": "Bun Cha",
     "amount": 70000,
     "description": "Street food",
-    "date": "2026-06-30",
-    "time": "12:00"
+    "date": "2026-06-30T12:00:00"
   },
   {
     "id": "exp-u2-016",
@@ -410,8 +375,7 @@
     "title": "Shopee Flash Sale",
     "amount": 560000,
     "description": "Electronics accessories",
-    "date": "2026-06-28",
-    "time": "00:05"
+    "date": "2026-06-28T00:05:00"
   },
   {
     "id": "exp-u2-017",
@@ -420,8 +384,7 @@
     "title": "Phone bill",
     "amount": 99000,
     "description": "Mobile data plan",
-    "date": "2026-06-01",
-    "time": "09:00"
+    "date": "2026-06-01T09:00:00"
   },
   {
     "id": "exp-u2-018",
@@ -430,7 +393,15 @@
     "title": "Flight ticket",
     "amount": 2300000,
     "description": "HCM to Phu Quoc",
-    "date": "2026-06-15",
-    "time": "10:30"
+    "date": "2026-06-15T10:30:00"
+  },
+  {
+    "id": "O7-E-mYiH4mOJTYQkGRAPyeo",
+    "title": "Dinner",
+    "amount": 400000,
+    "description": "Family's weekend dinner",
+    "categoryId": "6",
+    "userId": "2",
+    "date": "2026-07-19T21:02:52"
   }
 ]

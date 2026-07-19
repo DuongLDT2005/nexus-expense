@@ -1,36 +1,37 @@
-import { RefreshControl, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import React, { useCallback, useMemo, useRef, useState, memo } from 'react';
+import { RefreshControl, View, FlatList, TouchableOpacity } from "react-native";
+import { TouchableOpacity as GestureTouchableOpacity } from "react-native-gesture-handler";
+import React, { useCallback, useMemo, useRef, useState, memo } from "react";
 import Animated, {
   SharedValue,
   useAnimatedStyle,
   interpolate,
-} from 'react-native-reanimated';
-import Icon from '../atoms/Icons';
-import PrimaryText from '../atoms/PrimaryText';
-import { formatDate, formatCalendar } from '../../utils/dateUtils';
-import { formatWithSymbol } from '../../utils/numberUtils';
-import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
-import type { SwipeableMethods } from 'react-native-gesture-handler/ReanimatedSwipeable';
-import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { MainStackParamList } from '../../types';
+} from "react-native-reanimated";
+import Icon from "../atoms/Icons";
+import PrimaryText from "../atoms/PrimaryText";
+import { formatDate, formatCalendar } from "../../utils/dateUtils";
+import { formatWithSymbol } from "../../utils/numberUtils";
+import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
+import type { SwipeableMethods } from "react-native-gesture-handler/ReanimatedSwipeable";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { MainStackParamList } from "../../types";
 import {
   deleteExpenseById,
   getAllExpensesByMonth,
   getAllExpensesByDate,
-} from '../../services';
-import { useDispatch, useSelector } from 'react-redux';
+} from "../../services";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setTransactions,
   selectSelectedMonth,
-} from '../../redux/slices/transactionSlice';
-import { selectUser } from '../../redux/slices/authSlice';
-import { selectCurrency } from '../../redux/slices/settingsSlice';
-import useColorScheme from '../../hooks/useColorScheme';
-import { FlashList } from '@shopify/flash-list';
-import type { AppDispatch } from '../../redux/store';
-import type { ExpenseWithCategory } from '../../services/expenseService';
+} from "../../redux/slices/transactionSlice";
+import { selectUser } from "../../redux/slices/authSlice";
+import { selectCurrency } from "../../redux/slices/settingsSlice";
+import useColorScheme from "../../hooks/useColorScheme";
+
+import type { AppDispatch } from "../../redux/store";
+import type { ExpenseWithCategory } from "../../services/expenseService";
+import ConfirmModal from "./ConfirmModal";
 
 interface TransactionListProps {
   allExpenses: ExpenseWithCategory[];
@@ -55,61 +56,48 @@ const EDGE_INSET = 16;
 
 // ─── Swipe Action Button ─────────────────────────────────────────────────────
 
-const SwipeAction = ({
-  progress,
-  iconName,
-  iconColor,
-  backgroundColor,
-  side,
-  onPress,
-  edgeToEdge = false,
-}: {
-  progress: SharedValue<number>;
-  iconName: string;
-  iconColor: string;
-  backgroundColor: string;
-  side: 'left' | 'right';
-  onPress: () => void;
-  edgeToEdge?: boolean;
-}) => {
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(progress.value, [0, 0.6, 1], [0, 0.8, 1]),
-    transform: [{ scale: interpolate(progress.value, [0, 1], [0.6, 1]) }],
-  }));
+const SwipeAction = memo(
+  ({
+    progress,
+    iconName,
+    iconColor,
+    bgClassName,
+    onPress,
+  }: {
+    progress: SharedValue<number>;
+    iconName: string;
+    iconColor: string;
+    bgClassName: string;
+    onPress: () => void;
+  }) => {
+    const animatedStyle = useAnimatedStyle(() => ({
+      opacity: interpolate(progress.value, [0, 0.6, 1], [0, 0.8, 1]),
+      transform: [{ scale: interpolate(progress.value, [0, 1], [0.6, 1]) }],
+    }));
 
-  const extraPadding = edgeToEdge ? EDGE_INSET : 0;
-
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={0.7}
-      style={{
-        flex: 1,
-        width: ACTION_WIDTH + extraPadding,
-        paddingLeft: side === 'left' ? extraPadding : 0,
-        paddingRight: side === 'right' ? extraPadding : 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Animated.View
-        style={[
-          {
-            width: 40,
-            height: 40,
-            borderRadius: 20,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor,
-          },
-          animatedStyle,
-        ]}
+    return (
+      <View
+        className={`h-full items-center justify-center ${bgClassName}`}
+        style={{ width: ACTION_WIDTH }}
       >
-        <Icon name={iconName} size={18} color={iconColor} />
-      </Animated.View>
-    </TouchableOpacity>
-  );
-};
+        <GestureTouchableOpacity
+          onPress={onPress}
+          activeOpacity={0.7}
+          style={{
+            width: "100%",
+            height: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Animated.View style={animatedStyle}>
+            <Icon name={iconName} size={20} color={iconColor} />
+          </Animated.View>
+        </GestureTouchableOpacity>
+      </View>
+    );
+  },
+);
 
 // ─── Single Expense Row ──────────────────────────────────────────────────────
 
@@ -119,98 +107,112 @@ const ExpenseRow: React.FC<{
   onDelete: (expenseId: string) => void;
   openSwipeableRef: React.RefObject<{ close: () => void } | null>;
   edgeToEdge: boolean;
-}> = React.memo(({ expense, onEdit, onDelete, openSwipeableRef, edgeToEdge }) => {
-  const isDark = useColorScheme() === 'dark';
-  const currency = useSelector(selectCurrency);
-  const currencySymbol = currency?.symbol ?? '$';
-  const currencyCode = currency?.code;
-  const swipeableRef = useRef<SwipeableMethods | null>(null);
+}> = React.memo(
+  ({ expense, onEdit, onDelete, openSwipeableRef, edgeToEdge }) => {
+    const isDark = useColorScheme() === "dark";
+    const currency = useSelector(selectCurrency);
+    const currencySymbol = currency?.symbol ?? "$";
+    const currencyCode = currency?.code;
+    const swipeableRef = useRef<SwipeableMethods | null>(null);
 
-  const editColor = isDark ? '#22c55e' : '#22c55e';
-  const deleteColor = isDark ? '#f97316' : '#f97316';
-  const actionBg = isDark ? 'rgba(199,196,216,0.1)' : 'rgba(79,70,229,0.06)';
+    const editIconColor = isDark ? "#c3c0ff" : "#4f46e5";
+    const editBgClass = "bg-surface-highest";
+    const deleteIconColor = isDark ? "#ffb2b7" : "#95002b";
+    const deleteBgClass = "bg-tertiary-fixed-dim";
 
-  const handleSwipeWillOpen = useCallback(() => {
-    if (openSwipeableRef.current && openSwipeableRef.current !== swipeableRef.current) {
-      openSwipeableRef.current.close();
-    }
-    openSwipeableRef.current = swipeableRef.current;
-  }, [openSwipeableRef]);
+    const handleSwipeWillOpen = useCallback(() => {
+      if (
+        openSwipeableRef.current &&
+        openSwipeableRef.current !== swipeableRef.current
+      ) {
+        openSwipeableRef.current.close();
+      }
+      openSwipeableRef.current = swipeableRef.current;
+    }, [openSwipeableRef]);
 
-  return (
-    <View className="mb-3">
-      <ReanimatedSwipeable
-        ref={swipeableRef}
-        renderLeftActions={(progress, _translation, swipeableMethods) => (
-          <SwipeAction
-            progress={progress}
-            iconName="pencil"
-            iconColor={editColor}
-            backgroundColor={actionBg}
-            side="left"
-            edgeToEdge={edgeToEdge}
-            onPress={() => {
-              onEdit(expense);
-              swipeableMethods.close();
-            }}
-          />
-        )}
-        renderRightActions={(progress, _translation, swipeableMethods) => (
-          <SwipeAction
-            progress={progress}
-            iconName="trash-2"
-            iconColor={deleteColor}
-            backgroundColor={actionBg}
-            side="right"
-            edgeToEdge={edgeToEdge}
-            onPress={() => {
-              onDelete(String(expense.id));
-              swipeableMethods.close();
-            }}
-          />
-        )}
-        onSwipeableWillOpen={handleSwipeWillOpen}
-        friction={2}
-        overshootLeft={false}
-        overshootRight={false}
-        overshootFriction={8}
+    return (
+      <View
+        className={`mb-3 bg-white dark:bg-surface-variant/20 border border-surface-high rounded-2xl overflow-hidden shadow-sm ${edgeToEdge ? "mx-4" : ""}`}
       >
-        <View
-          className={`rounded-2xl flex-row items-center justify-between px-4 py-4 bg-white dark:bg-surface-variant/20 ${edgeToEdge ? 'mx-4' : ''
-            }`}
+        <ReanimatedSwipeable
+          ref={swipeableRef}
+          renderLeftActions={(progress, _translation, swipeableMethods) => (
+            <SwipeAction
+              progress={progress}
+              iconName="pencil"
+              iconColor={editIconColor}
+              bgClassName={editBgClass}
+              onPress={() => {
+                onEdit(expense);
+                swipeableMethods.close();
+              }}
+            />
+          )}
+          renderRightActions={(progress, _translation, swipeableMethods) => (
+            <SwipeAction
+              progress={progress}
+              iconName="trash-2"
+              iconColor={deleteIconColor}
+              bgClassName={deleteBgClass}
+              onPress={() => {
+                onDelete(String(expense.id));
+                swipeableMethods.close();
+              }}
+            />
+          )}
+          onSwipeableWillOpen={handleSwipeWillOpen}
+          friction={2}
+          overshootLeft={false}
+          overshootRight={false}
+          overshootFriction={8}
         >
-          <View className="flex-row items-center flex-1">
-            <View
-              className="w-11 h-11 items-center justify-center rounded-xl mr-3"
-              style={{ backgroundColor: expense.category?.color ? `${expense.category.color}30` : (isDark ? 'rgba(199,196,216,0.15)' : 'rgba(79,70,229,0.12)') }}
-            >
-              <Icon
-                name={expense.category?.icon || 'circle-dot'}
-                size={20}
-                color={expense.category?.color || (isDark ? '#c3c0ff' : '#4f46e5')}
-              />
+          <View className="flex-row items-center justify-between px-4 py-4 bg-white dark:bg-surface-variant/20">
+            <View className="flex-row items-center flex-1">
+              <View
+                className="w-11 h-11 items-center justify-center rounded-xl mr-3"
+                style={{
+                  backgroundColor: expense.category?.color
+                    ? `${expense.category.color}30`
+                    : isDark
+                      ? "rgba(199,196,216,0.15)"
+                      : "rgba(79,70,229,0.12)",
+                }}
+              >
+                <Icon
+                  name={expense.category?.icon || "circle-dot"}
+                  size={20}
+                  color={
+                    expense.category?.color || (isDark ? "#c3c0ff" : "#4f46e5")
+                  }
+                />
+              </View>
+              <View className="flex-1 gap-0.5">
+                <PrimaryText weight="bold" size={14} numberOfLines={1}>
+                  {expense.title}
+                </PrimaryText>
+                <PrimaryText
+                  size={11}
+                  className="text-on-surface-variant"
+                  numberOfLines={1}
+                >
+                  {expense.category?.name}
+                  {" • "}
+                  {formatDate(expense.date, "hh:mm A")}
+                </PrimaryText>
+              </View>
             </View>
-            <View className="flex-1 gap-0.5">
-              <PrimaryText weight="semibold" size={14} numberOfLines={1}>
-                {expense.title}
-              </PrimaryText>
-              <PrimaryText size={11} className="text-on-surface-variant" numberOfLines={1}>
-                {expense.category?.name}
-                {' • '}
-                {formatDate(expense.date, 'hh:mm A')}
+            <View className="ml-2.5 items-end">
+              <PrimaryText size={14} weight="bold" variant="number" className="text-tertiary">
+                -
+                {formatWithSymbol(expense.amount, currencySymbol, currencyCode)}
               </PrimaryText>
             </View>
           </View>
-          <View className="ml-2.5 items-end">
-            <PrimaryText size={14} weight="semibold" variant="number">
-              -{formatWithSymbol(expense.amount, currencySymbol, currencyCode)}
-            </PrimaryText>
-          </View>
-        </View>
-      </ReanimatedSwipeable>
-    </View>
-  );
-});
+        </ReanimatedSwipeable>
+      </View>
+    );
+  },
+);
 
 // ─── Inline Undo Banner ──────────────────────────────────────────────────────
 
@@ -221,8 +223,9 @@ const InlineUndo: React.FC<{
   return (
     <View className="mb-1">
       <View
-        className={`rounded-xl flex-row items-center justify-between px-3.5 py-3 bg-surface-high dark:bg-surface-variant/20 ${edgeToEdge ? 'mx-4' : ''
-          }`}
+        className={`rounded-xl flex-row items-center justify-between px-3.5 py-3 bg-surface-high dark:bg-surface-variant/20 ${
+          edgeToEdge ? "mx-4" : ""
+        }`}
       >
         <PrimaryText size={13} className="text-on-surface-variant">
           Transaction deleted
@@ -256,17 +259,28 @@ const TransactionItem: React.FC<{
   openSwipeableRef: React.RefObject<{ close: () => void } | null>;
   edgeToEdge: boolean;
 }> = React.memo(
-  ({ expenses: initialExpenses, label, groupDate, targetDate, targetMonth, openSwipeableRef, edgeToEdge }) => {
+  ({
+    expenses: initialExpenses,
+    label,
+    groupDate,
+    targetDate,
+    targetMonth,
+    openSwipeableRef,
+    edgeToEdge,
+  }) => {
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector(selectUser);
-    const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
-    const deletionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const navigation =
+      useNavigation<NativeStackNavigationProp<MainStackParamList>>();
     const [expenses, setExpenses] = useState(initialExpenses);
+    const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
     const [deletedItemId, setDeletedItemId] = useState<string | null>(null);
+    const deletionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     // Sync with parent when initial data changes
     React.useEffect(() => {
       setExpenses(initialExpenses);
+      setDeleteTargetId(null);
       setDeletedItemId(null);
       if (deletionTimeoutRef.current) {
         clearTimeout(deletionTimeoutRef.current);
@@ -275,10 +289,10 @@ const TransactionItem: React.FC<{
 
     const handleEdit = useCallback(
       (expense: ExpenseWithCategory) => {
-        navigation.navigate('UpdateTransactionScreen', {
+        navigation.navigate("UpdateTransactionScreen", {
           expenseId: String(expense.id),
           expenseTitle: expense.title,
-          expenseDescription: expense.description ?? '',
+          expenseDescription: expense.description ?? "",
           category: expense.category as any,
           expenseDate: expense.date,
           expenseAmount: expense.amount,
@@ -286,6 +300,10 @@ const TransactionItem: React.FC<{
       },
       [navigation],
     );
+
+    const onDeletePress = useCallback((expenseId: string) => {
+      setDeleteTargetId(expenseId);
+    }, []);
 
     const handleDelete = useCallback(
       (expenseId: string) => {
@@ -308,7 +326,7 @@ const TransactionItem: React.FC<{
           }
         }, 3000);
       },
-      [dispatch, targetDate, targetMonth, user],
+      [dispatch, targetMonth, user],
     );
 
     const handleUndo = useCallback(() => {
@@ -319,37 +337,69 @@ const TransactionItem: React.FC<{
       setDeletedItemId(null);
     }, []);
 
+    const confirmDelete = useCallback(() => {
+      if (deleteTargetId) {
+        handleDelete(deleteTargetId);
+        setDeleteTargetId(null);
+      }
+    }, [deleteTargetId, handleDelete]);
+
+    const cancelDelete = useCallback(() => {
+      setDeleteTargetId(null);
+    }, []);
+
     return (
       <View>
         {!targetDate && (
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('EverydayTransactionScreen', { date: groupDate })}
+            onPress={() =>
+              navigation.navigate("EverydayTransactionScreen", {
+                date: groupDate,
+              })
+            }
             style={{
               paddingHorizontal: edgeToEdge ? 16 : 0,
-              marginTop: 30,
-              marginBottom: 12
+              marginTop: 15,
+              marginBottom: 12,
             }}
           >
-            <PrimaryText size={11} weight="bold" className="text-on-surface-variant tracking-widest uppercase">
+            <PrimaryText
+              size={11}
+              weight="bold"
+              className="text-on-surface-variant tracking-widest uppercase"
+            >
               {label}
             </PrimaryText>
           </TouchableOpacity>
         )}
         {expenses.map((item) =>
           String(item.id) === deletedItemId ? (
-            <InlineUndo key={String(item.id)} onUndo={handleUndo} edgeToEdge={edgeToEdge} />
+            <InlineUndo
+              key={String(item.id)}
+              onUndo={handleUndo}
+              edgeToEdge={edgeToEdge}
+            />
           ) : (
             <ExpenseRow
               key={String(item.id)}
               expense={item}
               onEdit={handleEdit}
-              onDelete={handleDelete}
+              onDelete={onDeletePress}
               openSwipeableRef={openSwipeableRef}
               edgeToEdge={edgeToEdge}
             />
-          ),
+          )
         )}
+
+        <ConfirmModal
+          visible={deleteTargetId !== null}
+          onClose={cancelDelete}
+          onConfirm={confirmDelete}
+          title="Delete Transaction"
+          message="Are you sure you want to delete this transaction?"
+          isDamage={true}
+        />
       </View>
     );
   },
@@ -374,7 +424,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
     const groupedExpenses = new Map<string, ExpenseWithCategory[]>();
 
     allExpenses?.forEach((expense) => {
-      const date = formatDate(expense.date, 'YYYY-MM-DD');
+      const date = formatDate(expense.date, "YYYY-MM-DD");
       const currentGroup = groupedExpenses.get(date) ?? [];
       currentGroup.push(expense);
       groupedExpenses.set(date, currentGroup);
@@ -411,13 +461,16 @@ const TransactionList: React.FC<TransactionListProps> = ({
   const refreshControl = useMemo(
     () =>
       onRefresh ? (
-        <RefreshControl refreshing={refreshing ?? false} onRefresh={onRefresh} />
+        <RefreshControl
+          refreshing={refreshing ?? false}
+          onRefresh={onRefresh}
+        />
       ) : undefined,
     [refreshing, onRefresh],
   );
 
   return (
-    <FlashList
+    <FlatList
       data={groupedData}
       renderItem={renderGroupItem}
       keyExtractor={(item) => item.date}

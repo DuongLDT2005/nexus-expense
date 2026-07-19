@@ -21,8 +21,8 @@ interface PrimaryButtonProps {
   textColor?: string;
 }
 
-const HEIGHT_NUM: Record<ButtonSize, number> = { sm: 40, md: 52, lg: 56 };
-const FONT: Record<ButtonSize, number> = { sm: 12, md: 15, lg: 16 };
+const HEIGHT_NUM: Record<ButtonSize, number> = { sm: 36, md: 44, lg: 52 };
+const FONT: Record<ButtonSize, number> = { sm: 12, md: 14, lg: 16 };
 const ICON_S: Record<ButtonSize, number> = { sm: 14, md: 16, lg: 20 };
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
@@ -89,6 +89,11 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
           backgroundColor: isDark ? "#4ade80" : "#16a34a",
         };
       }
+      if (variant === "danger") {
+        return {
+          backgroundColor: isDark ? "#ffb4ab" : "#ba1a1a",
+        };
+      }
       if (variant === "outline") {
         return {
           backgroundColor: isDark ? "transparent" : "#fafafa",
@@ -100,8 +105,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
       return { backgroundColor: "transparent" };
     })();
 
-    const isRoundedRect = variant === "outline";
-    const borderRadius = isRoundedRect ? 16 : 9999;
+    const borderRadius = 16; // rounded-2xl is 16px
 
     const widthStyle = fullWidth ? { width: "100%" as const } : {};
     const iconEl = icon ? (
@@ -122,7 +126,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
               alignItems: "center" as const,
               justifyContent: "center" as const,
               flexDirection: "row" as const,
-              paddingHorizontal: 16,
+              paddingHorizontal: 14,
               opacity: isDisabled ? 0.5 : 1,
             },
             bgStyle,

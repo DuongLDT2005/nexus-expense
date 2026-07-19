@@ -78,22 +78,17 @@ export const useHomeScreen = () => {
     return { totalSpent: total, transactionCount: count, avgPerDay: avg };
   }, [transactions, selectedYear, selectedMonthIndex]);
 
-  // Calculate today & yesterday totals
-  const { todayTotal, yesterdayTotal } = useMemo(() => {
+  // Calculate today total
+  const todayTotal = useMemo(() => {
     const today = new Date();
     const todayStr = today.toISOString().slice(0, 10); // YYYY-MM-DD
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayStr = yesterday.toISOString().slice(0, 10);
 
     let tToday = 0;
-    let tYesterday = 0;
     (transactions ?? []).forEach((t: ExpenseWithCategory) => {
       const d = t.date?.slice(0, 10);
       if (d === todayStr) tToday += t.amount;
-      else if (d === yesterdayStr) tYesterday += t.amount;
     });
-    return { todayTotal: tToday, yesterdayTotal: tYesterday };
+    return tToday;
   }, [transactions]);
 
   // Fetch categories on mount
@@ -166,7 +161,6 @@ export const useHomeScreen = () => {
     transactionCount,
     avgPerDay,
     todayTotal,
-    yesterdayTotal,
     handleMonthYearSelect,
     showMonthPicker,
     setShowMonthPicker,

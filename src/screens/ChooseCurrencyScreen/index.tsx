@@ -35,6 +35,7 @@ export default function ChooseCurrencyScreen() {
     <PrimaryView
       useSidePadding={false}
       className="flex-grow flex flex-col justify-between bg-white dark:bg-surface-lowest"
+      style={{ paddingTop: 0 }}
     >
       {/* Header bar */}
       <AppHeader
