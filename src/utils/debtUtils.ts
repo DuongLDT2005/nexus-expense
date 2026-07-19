@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { Debt, Debtor } from '../types';
+import { DEBT_TYPE } from '../constants/debtTypes';
 
 export const buildDebtorTypeMap = (debtors: Debtor[]): Map<string, string> =>
   new Map(debtors.map(d => [d.id, d.type]));
@@ -7,10 +8,10 @@ export const buildDebtorTypeMap = (debtors: Debtor[]): Map<string, string> =>
 export const computeDebtorNet = (debts: Debt[], debtorId: string): number =>
   debts
     .filter(d => d.debtorId === debtorId)
-    .reduce((sum, d) => sum + (d.type === 'Borrow' ? d.amount : -d.amount), 0);
+    .reduce((sum, d) => sum + (d.type === DEBT_TYPE.BORROW ? d.amount : -d.amount), 0);
 
 export const computeTotalDebts = (debts: Debt[]): number =>
-  debts.reduce((sum, d) => sum + (d.type === 'Borrow' ? d.amount : -d.amount), 0);
+  debts.reduce((sum, d) => sum + (d.type === DEBT_TYPE.BORROW ? d.amount : -d.amount), 0);
 
 /** Calculates the summary values for bento-style cards on DebtsScreen */
 export const computeSummaryTotals = (debtors: Debtor[], debts: Debt[]) => {

@@ -11,6 +11,7 @@ import { sortByDateDesc } from '../../utils/dateUtils';
 import { HomeStackParamList } from '../../types';
 import { Alert } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
+import { DEBT_TYPE } from '../../constants/debtTypes';
 
 type IndividualDebtsScreenRouteProp = RouteProp<HomeStackParamList, 'IndividualDebtsScreen'>;
 
@@ -31,7 +32,7 @@ export const useIndividualDebtsScreen = () => {
   const [debtorColor, setDebtorColor] = useState('#4f46e5');
   const [debtorIcon, setDebtorIcon] = useState('user');
   const [refreshing, setRefreshing] = useState(false);
-  const [debtsTypeTab, setDebtsTypeTab] = useState<'Borrow' | 'Lend'>('Borrow');
+  const [debtsTypeTab, setDebtsTypeTab] = useState<'Borrow' | 'Lend'>(DEBT_TYPE.BORROW);
   const [isLoadingDebtor, setIsLoadingDebtor] = useState(true);
 
   // Load debtor details on focus
@@ -79,7 +80,7 @@ export const useIndividualDebtsScreen = () => {
 
   const { sortedBorrowings, sortedLendings, totalBorrowings, totalLendings, debtorTotal } = useMemo(() => {
     const sorted = sortByDateDesc(individualDebts);
-    const borrowings = sorted.filter(d => d.type === 'Borrow');
+    const borrowings = sorted.filter(d => d.type === DEBT_TYPE.BORROW);
     const lendings = sorted.filter(d => d.type === 'Lend');
 
     const bTotal = borrowings.reduce((sum, d) => sum + d.amount, 0);
@@ -202,7 +203,7 @@ export const useIndividualDebtsScreen = () => {
     setDebtsTypeTab(tab);
   }, []);
 
-  const isTabBorrow = debtsTypeTab === 'Borrow';
+  const isTabBorrow = debtsTypeTab === DEBT_TYPE.BORROW;
   const currentDebts = isTabBorrow ? sortedBorrowings : sortedLendings;
 
   return {

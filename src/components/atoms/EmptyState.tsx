@@ -33,7 +33,7 @@ const EmptyState: React.FC<EmptyStateProps> = memo(
     const iconColor = isDark ? "#c7c4d8" : "#777587";
 
     return (
-      <View className="items-center justify-center mt-[25%] px-4">
+      <View className="items-center justify-center mt-3 px-4">
         {/* Icon Wrapper */}
         <View className="w-14 h-14 rounded-2xl items-center justify-center bg-surface-high dark:bg-surface-variant/20 mb-4 shadow-sm">
           <Icon name={iconMap[type]} size={24} color={iconColor} />
