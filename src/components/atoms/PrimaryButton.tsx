@@ -21,11 +21,7 @@ interface PrimaryButtonProps {
   textColor?: string;
 }
 
-const HEIGHT: Record<ButtonSize, string> = {
-  sm: "h-10",
-  md: "h-13",
-  lg: "h-14",
-};
+const HEIGHT_NUM: Record<ButtonSize, number> = { sm: 36, md: 44, lg: 52 };
 const FONT: Record<ButtonSize, number> = { sm: 12, md: 14, lg: 16 };
 const ICON_S: Record<ButtonSize, number> = { sm: 14, md: 16, lg: 20 };
 
@@ -81,7 +77,37 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
                 ? "#c3c0ff"
                 : "#4f46e5"); // --primary
 
-    const widthClass = fullWidth ? "w-full" : "";
+    // Resolve background style
+    const bgStyle = (() => {
+      if (variant === "primary") {
+        return {
+          backgroundColor: isDark ? "#7c78ff" : "#4338ca",
+        };
+      }
+      if (variant === "secondary") {
+        return {
+          backgroundColor: isDark ? "#4ade80" : "#16a34a",
+        };
+      }
+      if (variant === "danger") {
+        return {
+          backgroundColor: isDark ? "#ffb4ab" : "#ba1a1a",
+        };
+      }
+      if (variant === "outline") {
+        return {
+          backgroundColor: isDark ? "transparent" : "#fafafa",
+          borderWidth: 1,
+          borderStyle: "dashed" as const,
+          borderColor: isDark ? "#555" : "#c0bfca",
+        };
+      }
+      return { backgroundColor: "transparent" };
+    })();
+
+    const borderRadius = 16; // rounded-2xl is 16px
+
+    const widthStyle = fullWidth ? { width: "100%" as const } : {};
     const iconEl = icon ? (
       <Icon name={icon} size={ICON_S[size]} color={resolvedTextColor} />
     ) : null;
@@ -90,12 +116,21 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
       (variant === "outline" || size === "sm" ? "semibold" : "bold");
 
     return (
-      <View className={`${widthClass} relative`}>
-        {/* Visual Button Representation */}
+      <View style={[{ position: "relative" as const }, widthStyle]}>
+        {/* Visual Button */}
         <View
-          className={`${HEIGHT[size]} w-full ${bgClass} rounded-2xl items-center justify-center flex-row px-4 ${
-            isDisabled ? "opacity-50" : ""
-          }`}
+          style={[
+            {
+              height: HEIGHT_NUM[size],
+              borderRadius,
+              alignItems: "center" as const,
+              justifyContent: "center" as const,
+              flexDirection: "row" as const,
+              paddingHorizontal: 14,
+              opacity: isDisabled ? 0.5 : 1,
+            },
+            bgStyle,
+          ]}
           pointerEvents="none"
         >
           {loading ? (
@@ -120,7 +155,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
           )}
         </View>
 
-        {/* Touchable Overlay for reliable touch handling */}
+        {/* Touchable Overlay */}
         {!isDisabled && (
           <TouchableOpacity
             onPress={onPress}
@@ -133,7 +168,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
               left: 0,
               right: 0,
               bottom: 0,
-              borderRadius: 16,
+              borderRadius,
             }}
           />
         )}

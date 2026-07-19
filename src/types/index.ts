@@ -115,7 +115,14 @@ export type HomeStackParamList = {
   TabNavigator: undefined;
   SettingsScreen: undefined;
   AddTransactionsScreen: undefined;
-  UpdateTransactionScreen: { expenseId: string };
+  UpdateTransactionScreen: {
+    expenseId: string;
+    expenseTitle: string;
+    expenseDescription: string;
+    category: Category;
+    expenseDate: string;
+    expenseAmount: number;
+  };
   AddCategoryScreen: undefined;
   UpdateCategoryScreen: { categoryId: string };
   AddDebtorScreen: undefined;

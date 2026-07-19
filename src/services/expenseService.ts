@@ -122,7 +122,7 @@ export const getAllExpensesByDate = async (
 ): Promise<ExpenseWithCategory[]> => {
   try {
     const all = await getAllExpensesByUserIdWithCategory(userId);
-    return all.filter(e => e.date === date);
+    return all.filter(e => e.date && e.date.startsWith(date));
   } catch {
     return [];
   }
