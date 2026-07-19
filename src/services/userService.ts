@@ -25,7 +25,7 @@ export const createUser = async (
 
 export const updateUserById = async (
   userId: string,
-  updates: { fullName?: string; email?: string; currencyId?: string; theme?: string },
+  updates: { fullName?: string; email?: string; currencyId?: string; theme?: string; password?: string; username?: string },
 ): Promise<void> => {
   await request<UserData>(`/users/${userId}`, {
     method: 'PATCH',

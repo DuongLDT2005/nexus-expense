@@ -148,7 +148,7 @@ const DebtRow = memo(
 
     const editIconColor = isDark ? "#c3c0ff" : "#4f46e5";
     const editBgClass = "bg-surface-highest";
-    const deleteIconColor = isDark ? "#ffb2b7" : "#95002b";
+    const deleteIconColor = isDark ? "#400010" : "#95002b";
     const deleteBgClass = "bg-tertiary-fixed-dim";
 
     return (

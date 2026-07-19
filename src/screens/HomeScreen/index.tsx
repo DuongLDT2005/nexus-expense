@@ -172,6 +172,7 @@ export default function HomeScreen() {
     <>
       <PrimaryView
         useSidePadding={false}
+        useBottomPadding={false}
         className="bg-surface-low"
         style={{ paddingTop: 0 }}
       >

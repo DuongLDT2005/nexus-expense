@@ -297,7 +297,7 @@ const ExpenseEntry: React.FC<ExpenseEntryProps> = ({ type, route }) => {
         />
       </ScrollView>
 
-      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 dark:bg-inverse-surface/90 border-t border-surface-high dark:border-outline-variant">
+      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 border-t border-surface-high dark:border-outline-variant">
         <PrimaryButton
           onPress={isAddButton ? handleAddExpense : handleUpdateExpense}
           buttonTitle={isAddButton ? "Add Transaction" : "Update Transaction"}

@@ -1,0 +1,184 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nexus Expense - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#006e2f",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-primary-container": "#dad7ff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container-highest": "#e4e1ee",
+                    "surface-container-high": "#eae6f4",
+                    "surface": "#fcf8ff",
+                    "surface-dim": "#dcd8e5",
+                    "outline-variant": "#c7c4d8",
+                    "tertiary-container": "#bf0f3c",
+                    "on-tertiary-container": "#ffd0d2",
+                    "on-surface-variant": "#464555",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#4ae176",
+                    "outline": "#777587",
+                    "inverse-primary": "#c3c0ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#f0ecf9",
+                    "inverse-on-surface": "#f3effc",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "background": "#fcf8ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#6bff8f",
+                    "on-tertiary-fixed": "#40000d",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#fcf8ff",
+                    "inverse-surface": "#302f39",
+                    "surface-container-low": "#f5f2ff",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "surface-variant": "#e4e1ee",
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "tertiary-fixed": "#ffdadb",
+                    "primary-container": "#4f46e5",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#0f0069",
+                    "primary": "#3525cd",
+                    "on-surface": "#1b1b24",
+                    "tertiary": "#95002b",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary-container": "#007432",
+                    "secondary-container": "#6bff8f",
+                    "on-secondary-fixed": "#002109",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-background": "#1b1b24",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "xxl": "1rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "display": ["Manrope"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full bg-surface-container-lowest flex items-center justify-between px-4 py-4 transition-all duration-150 border-b border-surface-container-high">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-headline font-bold text-[22px] tracking-tight text-on-background">Settings</h1>
+</div>
+<div class="flex items-center gap-2">
+<!-- Space for potential right-side actions -->
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-8 space-y-8 pt-4"><section class="space-y-3"><div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-container-high flex items-center gap-6"><div class="flex flex-col items-center gap-4 w-full"><div class="w-20 h-20 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-primary text-[40px]">person</span></div><div class="text-center"><h3 class="font-headline font-bold text-[22px] text-on-background">Indranil</h3><p class="text-on-surface-variant text-sm">indranil@nexus.com</p><button class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary text-primary font-headline font-medium text-xs transition-all active:scale-95 hover:bg-primary/5"><span class="material-symbols-outlined text-[16px]">edit</span><span class="">Edit Profile</span></button></div></div></div></section>
+<!-- Personalization Section -->
+<section class="space-y-3">
+
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-surface-container-high">
+<!-- Theme Row -->
+<button class="w-full flex items-center gap-4 px-4 py-4 hover:bg-surface-container-low transition-colors group">
+<div class="w-8 h-8 flex items-center justify-center rounded-xl bg-primary-fixed text-primary">
+<span class="material-symbols-outlined text-[20px]">light_mode</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<span class="font-medium text-on-surface">Theme</span>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">Light</span>
+<span class="material-symbols-outlined text-outline-variant text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</div>
+</button>
+<div class="mx-4 h-[1px] bg-surface-container-high"></div>
+<!-- Name Row -->
+
+
+<!-- Currency Row -->
+<button class="w-full flex items-center gap-4 px-4 py-4 hover:bg-surface-container-low transition-colors group">
+<div class="w-8 h-8 flex items-center justify-center rounded-xl bg-primary-fixed text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<span class="font-medium text-on-surface">Currency</span>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2 py-0.5 rounded-lg">
+<span class="font-bold text-xs text-primary">₹</span>
+<span class="text-on-surface-variant text-xs">Indian Rupee</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</div>
+</button>
+</div>
+</section>
+<!-- Your Data Section -->
+
+<!-- About Section -->
+
+<!-- Footer -->
+<footer class="pt-8 pb-12 text-center space-y-1">
+
+
+<div class="pt-8 px-4"><button class="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-error-container text-error font-bold transition-all active:scale-95 duration-150 hover:bg-error/10"><span class="material-symbols-outlined text-[20px]">logout</span><span class="">Log Out</span></button></div></footer>
+</main>
+<!-- BottomNavBar -->
+
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-[0.99]');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-[0.99]');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-[0.99]');
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body></html>

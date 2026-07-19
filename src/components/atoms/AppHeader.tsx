@@ -22,7 +22,7 @@ const AppHeader: React.FC<AppHeaderProps> = React.memo(
 
     return (
       <View
-        className="flex-row items-center justify-between w-full bg-white/80 dark:bg-inverse-surface/80 border-b border-surface-high dark:border-outline-variant px-4 shadow-sm"
+        className="flex-row items-center justify-between w-full bg-surface-lowest/80 border-b border-surface-high dark:border-outline-variant px-4 shadow-sm"
         style={{
           paddingTop: insets.top,
           height: 45 + insets.top,

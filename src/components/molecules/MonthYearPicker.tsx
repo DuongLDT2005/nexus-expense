@@ -46,13 +46,13 @@ const MonthYearPicker: React.FC<MonthYearPickerProps> = memo(
     const disabledColor = isDark ? '#49454f' : '#d6d5dd';
 
     return (
-      <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
+      <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose} statusBarTranslucent>
         <Pressable
           className="flex-1 justify-end bg-black/40"
           onPress={onClose}
         >
           <Pressable
-            className="bg-white dark:bg-inverse-surface rounded-t-3xl px-5 pt-5 pb-8"
+            className="bg-surface-lowest rounded-t-3xl px-5 pt-5 pb-8"
             onPress={(e) => e.stopPropagation()}
           >
             {/* Year Selector */}

@@ -65,7 +65,7 @@ export const useChooseCurrencyScreen = () => {
   }, [currencies]);
 
   const handleCurrencySelect = useCallback((currency: CurrencyData) => {
-    setSelectedCurrency(currency);
+    setSelectedCurrency((prev) => (prev?.id === currency.id ? null : currency));
   }, []);
 
   const handleCurrencySubmit = useCallback(async () => {

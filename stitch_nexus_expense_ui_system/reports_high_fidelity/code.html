@@ -1,0 +1,315 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nexus Expense - Reports</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#ffdadb",
+            "primary": "#3525cd",
+            "on-tertiary-fixed": "#40000d",
+            "error": "#ba1a1a",
+            "tertiary": "#95002b",
+            "on-secondary-fixed": "#002109",
+            "surface-variant": "#e4e1ee",
+            "inverse-surface": "#302f39",
+            "inverse-primary": "#c3c0ff",
+            "on-tertiary-container": "#ffd0d2",
+            "on-primary-fixed-variant": "#3323cc",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e4e1ee",
+            "on-error-container": "#93000a",
+            "on-background": "#1b1b24",
+            "inverse-on-surface": "#f3effc",
+            "surface-tint": "#4d44e3",
+            "surface-container-low": "#f5f2ff",
+            "surface-dim": "#dcd8e5",
+            "secondary-container": "#6bff8f",
+            "primary-fixed": "#e2dfff",
+            "on-secondary-container": "#007432",
+            "surface-bright": "#fcf8ff",
+            "outline": "#777587",
+            "tertiary-fixed-dim": "#ffb2b7",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-primary-fixed": "#0f0069",
+            "tertiary-container": "#bf0f3c",
+            "secondary": "#006e2f",
+            "background": "#fcf8ff",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c7c4d8",
+            "secondary-fixed-dim": "#4ae176",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#4f46e5",
+            "on-tertiary-fixed-variant": "#92002a",
+            "secondary-fixed": "#6bff8f",
+            "on-surface": "#1b1b24",
+            "on-primary": "#ffffff",
+            "on-surface-variant": "#464555",
+            "on-primary-container": "#dad7ff",
+            "surface-container": "#f0ecf9",
+            "on-secondary": "#ffffff",
+            "surface": "#fcf8ff",
+            "surface-container-high": "#eae6f4",
+            "on-secondary-fixed-variant": "#005321"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.5rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "display": ["Manrope"],
+            "body": ["Manrope"],
+            "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .chart-ring {
+      transition: stroke-dashoffset 0.8s ease-out;
+    }
+    .heatmap-cell:hover {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body class="text-on-background selection:bg-primary-container selection:text-on-primary-container bg-surface-container-low">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm border-b border-surface-container-high dark:border-outline-variant flex justify-between items-center px-4 md:px-10 h-16">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">N</div>
+<h1 class="font-bold text-2xl tracking-tight text-primary dark:text-primary-fixed-dim">Reports</h1>
+</div>
+<div class="flex items-center gap-4">
+
+
+<button class="flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant/20 transition-colors active:scale-90">
+  <span class="material-symbols-outlined">settings</span>
+</button></div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-10 max-w-4xl mx-auto space-y-8">
+<!-- Control Row -->
+<div class="space-y-6">
+<div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+<button class="flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-xl font-semibold shadow-md active:scale-95 transition-transform">
+<span class="">October 2023</span>
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+<div class="flex gap-4 w-full md:w-auto">
+<div class="flex-1 md:w-40 bg-surface-container-low p-4 rounded-xl border border-surface-container-high">
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Total</p>
+<p class="text-xl font-bold">₹12,450</p>
+</div>
+<div class="flex-1 md:w-40 bg-surface-container-low p-4 rounded-xl border border-surface-container-high">
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Avg/Day</p>
+<p class="text-xl font-bold">₹401</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Heatmap Section -->
+<section class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-container-high">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-on-surface">Daily Activity</h2>
+<span class="material-symbols-outlined text-on-surface-variant">calendar_month</span>
+</div>
+<div class="grid grid-cols-7 gap-2 mb-4">
+<!-- Week Headers -->
+<div class="text-center text-xs font-bold text-on-surface-variant">Mon</div>
+<div class="text-center text-xs font-bold text-on-surface-variant">Tue</div>
+<div class="text-center text-xs font-bold text-on-surface-variant">Wed</div>
+<div class="text-center text-xs font-bold text-on-surface-variant">Thu</div>
+<div class="text-center text-xs font-bold text-on-surface-variant">Fri</div>
+<div class="text-center text-xs font-bold text-on-surface-variant">Sat</div>
+<div class="text-center text-xs font-bold text-on-surface-variant">Sun</div>
+<!-- Days with colors representing intensity -->
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">1</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/20 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">2</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/60 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-bold transition-transform shadow-sm border border-secondary/20">3</div>
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">4</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/40 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">5</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/10 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">6</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/80 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-bold transition-transform shadow-md border border-secondary/30">7</div>
+<!-- Row 2 -->
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/30 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">8</div>
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">9</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/90 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-bold transition-transform shadow-md border border-secondary/40">10</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/20 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">11</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/50 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">12</div>
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">13</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/70 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-bold transition-transform shadow-sm border border-secondary/30">14</div>
+<!-- Row 3... -->
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/10 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">15</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/40 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">16</div>
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">17</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/100 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-extrabold transition-transform shadow-lg ring-2 ring-primary/20">18</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/20 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">19</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/40 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">20</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/30 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">21</div>
+<!-- Row 4 -->
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">22</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/10 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">23</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/50 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">24</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/80 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-bold transition-transform">25</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/20 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">26</div>
+<div class="heatmap-cell h-10 md:h-12 bg-surface-container-high rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">27</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/60 rounded-md flex items-center justify-center text-[10px] text-on-secondary font-bold transition-transform">28</div>
+<!-- Row 5 -->
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/20 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">29</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/10 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">30</div>
+<div class="heatmap-cell h-10 md:h-12 bg-secondary/30 rounded-md flex items-center justify-center text-[10px] text-on-surface-variant transition-transform">31</div>
+<div class="h-10 md:h-12 rounded-md"></div>
+<div class="h-10 md:h-12 rounded-md"></div>
+<div class="h-10 md:h-12 rounded-md"></div>
+<div class="h-10 md:h-12 rounded-md"></div>
+</div>
+<div class="flex items-center justify-end gap-2">
+<span class="text-[10px] font-bold text-on-surface-variant">Less</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-surface-container-high rounded-sm"></div>
+<div class="w-3 h-3 bg-secondary/20 rounded-sm"></div>
+<div class="w-3 h-3 bg-secondary/50 rounded-sm"></div>
+<div class="w-3 h-3 bg-secondary/80 rounded-sm"></div>
+<div class="w-3 h-3 bg-secondary rounded-sm"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant">More</span>
+</div>
+</section>
+<!-- Spending Distribution (Pie Chart) -->
+<section class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-container-high">
+<h2 class="text-lg font-bold text-on-surface mb-8">Spending Distribution</h2>
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="relative w-48 h-48 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<!-- Background circle -->
+<circle class="text-surface-container-high stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="12"></circle>
+<!-- Segments (hardcoded for UI demo) -->
+<circle class="text-primary stroke-current chart-ring" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round" stroke-width="12" style="stroke-dashoffset: 62.8;"></circle>
+<circle class="text-secondary stroke-current chart-ring" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="188.4" stroke-linecap="round" stroke-width="12" style="stroke-dashoffset: 188.4;"></circle>
+<circle class="text-tertiary stroke-current chart-ring" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="230.1" stroke-linecap="round" stroke-width="12" style="stroke-dashoffset: 230.1;"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Spent</span>
+<span class="text-xl font-bold">₹12.4k</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 w-full">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-semibold text-on-surface">Shopping</span>
+</div>
+<div class="text-right">
+<p class="font-bold">₹6,225</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">50%</p>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-semibold text-on-surface">Food &amp; Drink</span>
+</div>
+<div class="text-right">
+<p class="font-bold">₹3,112</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">25%</p>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="font-semibold text-on-surface">Transport</span>
+</div>
+<div class="text-right">
+<p class="font-bold">₹1,867</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">15%</p>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="font-semibold text-on-surface">Others</span>
+</div>
+<div class="text-right">
+<p class="font-bold">₹1,246</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">10%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-lg border-t border-surface-container-high dark:border-outline-variant flex justify-around items-center h-20 px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant/20 rounded-xl px-4 py-2 transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px] font-semibold mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-container-low dark:hover:bg-surface-variant/20 rounded-xl px-4 py-2 transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">insights</span>
+<span class="font-label-sm text-[10px] mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant/20 rounded-xl px-4 py-2 transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-sm text-[10px] font-semibold mt-1">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant/20 rounded-xl px-4 py-2 transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-[10px] font-semibold mt-1">Debts</span>
+</a>
+</nav>
+<script>
+    // Micro-interactions
+    document.querySelectorAll('.heatmap-cell').forEach(cell => {
+      cell.addEventListener('mouseenter', () => {
+        // Optional: Trigger a small vibration or custom event
+      });
+    });
+
+    // Handle intersection for animation triggers
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.chart-ring').forEach(ring => {
+            // Re-trigger animation by resetting offset
+            const offset = ring.getAttribute('stroke-dashoffset');
+            ring.style.strokeDashoffset = '251.2';
+            setTimeout(() => {
+              ring.style.strokeDashoffset = offset;
+            }, 50);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const reportSection = document.querySelector('section:nth-of-type(2)');
+    if(reportSection) observer.observe(reportSection);
+  </script>
+
+
+
+
+
+
+</body></html>

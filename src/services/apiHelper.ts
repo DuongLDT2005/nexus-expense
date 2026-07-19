@@ -6,7 +6,7 @@ const getBaseUrl = () => {
     const ip = hostUri.split(':')[0];
     return `http://${ip}:5000`;
   }
-  return 'http://192.168.1.8:5000'; // Fallback IP
+  return 'http://192.168.1.154:5000'; // Fallback IP
 };
 
 const BASE_URL = getBaseUrl();

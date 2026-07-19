@@ -119,7 +119,7 @@ const DebtorEntry: React.FC<DebtorEntryProps> = ({
       </KeyboardAvoidingView>
 
       {/* Fixed Footer Button */}
-      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 dark:bg-inverse-surface/90 border-t border-surface-high dark:border-outline-variant">
+      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 border-t border-surface-high dark:border-outline-variant">
         <PrimaryButton
           buttonTitle={isAddButton ? "Add Debtor" : "Update Debtor"}
           onPress={handleSave}

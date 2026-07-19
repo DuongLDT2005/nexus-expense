@@ -85,6 +85,7 @@ const DatePicker: React.FC<DatePickerProps> = memo(({
           transparent
           animationType="fade"
           onRequestClose={togglePicker}
+          statusBarTranslucent
         >
           <TouchableOpacity
             className="flex-1 bg-black/40 justify-end"
@@ -93,7 +94,7 @@ const DatePicker: React.FC<DatePickerProps> = memo(({
           >
             <TouchableOpacity
               activeOpacity={1}
-              className="bg-surface-container-lowest dark:bg-surface-dim rounded-t-3xl border-t border-outline-variant/30 px-6 pt-4 pb-8"
+              className="bg-surface-lowest dark:bg-surface-low rounded-t-3xl border-t border-outline-variant/30 px-6 pt-4 pb-8"
             >
               <View className="flex-row justify-between items-center mb-4">
                 <PrimaryText className="text-base font-bold text-on-surface">

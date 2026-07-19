@@ -6,6 +6,7 @@ import { Expense } from '../../types';
 import { getAllExpensesByCategoryAndMonth } from '../../services/expenseService';
 import { selectUser } from '../../redux/slices/authSlice';
 import { useState } from 'react';
+import { formatWithSymbol } from '../../utils/numberUtils';
 import { selectCurrency } from '../../redux/slices/settingsSlice';
 
 export const useCategoryTransactionScreen = () => {
@@ -87,8 +88,10 @@ export const useCategoryTransactionScreen = () => {
     }
   }, [yearMonth]);
 
-  const formatAmount = (amount: number) =>
-    `${currencySymbol}${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  const formatAmount = useCallback(
+    (amount: number) => formatWithSymbol(amount, currencySymbol, currency?.code),
+    [currencySymbol, currency?.code]
+  );
 
   return {
     transactions,

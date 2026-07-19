@@ -179,10 +179,10 @@ const CategoryEntry: React.FC<CategoryEntryProps> = ({ type, route }) => {
                     <Icon
                       name={cat.icon || "shapes"}
                       size={16}
-                      color={isSelected ? "#ffffff" : onSurfaceVariantColor}
+                      color={isSelected ? (isDark ? "#1d00a5" : "#ffffff") : onSurfaceVariantColor}
                     />
                     <PrimaryText
-                      className={`text-[13px] ${isSelected ? "font-bold text-white" : "font-semibold text-on-surface"}`}
+                      className={`text-[13px] ${isSelected ? (isDark ? "font-bold text-primary-on" : "font-bold text-white") : "font-semibold text-on-surface"}`}
                     >
                       {cat.name}
                     </PrimaryText>
@@ -195,7 +195,7 @@ const CategoryEntry: React.FC<CategoryEntryProps> = ({ type, route }) => {
       </ScrollView>
 
       {/* Fixed Bottom Action Bar */}
-      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 dark:bg-inverse-surface/90 border-t border-surface-high dark:border-outline-variant">
+      <View className="absolute bottom-0 w-full p-6 bg-surface-lowest/90 border-t border-surface-high dark:border-outline-variant">
         <PrimaryButton
           onPress={handleSave}
           buttonTitle={isAddButton ? "Add Category" : "Update Category"}

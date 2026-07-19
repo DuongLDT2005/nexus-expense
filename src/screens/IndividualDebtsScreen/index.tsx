@@ -23,6 +23,7 @@ function IndividualDebtsListHeader({
   onMarkAsPaid,
   onUpdateDebtor,
   onDeleteDebtor,
+  isDark,
 }: {
   totalBorrowings: number;
   totalLendings: number;
@@ -35,6 +36,7 @@ function IndividualDebtsListHeader({
   onMarkAsPaid: () => void;
   onUpdateDebtor: () => void;
   onDeleteDebtor: () => void;
+  isDark: boolean;
 }) {
   let statusText = "Settled";
   let statusColorClass = "text-on-surface";
@@ -90,9 +92,9 @@ function IndividualDebtsListHeader({
           <TouchableOpacity
             onPress={onUpdateDebtor}
             activeOpacity={0.7}
-            className="w-10 h-10 items-center justify-center rounded-full bg-primary"
+            className="w-10 h-10 items-center justify-center rounded-full bg-primary-fixed-dim"
           >
-            <Icon name="pencil" size={18} color="#dad7ff" />
+            <Icon name="pencil" size={18} color="#1d00a5" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={onDeleteDebtor}
@@ -111,13 +113,13 @@ function IndividualDebtsListHeader({
           onPress={onSetBorrowTab}
           className="px-6 py-2 rounded-full"
           style={{
-            backgroundColor: isTabBorrow ? "#95002b" : "#eae6f4",
+            backgroundColor: isTabBorrow ? "#95002b" : (isDark ? "rgba(234, 230, 244, 0.1)" : "#eae6f4"),
           }}
         >
           <Text
             className="text-sm font-semibold font-outfit"
             style={{
-              color: isTabBorrow ? "#ffffff" : "#464555",
+              color: isTabBorrow ? "#ffffff" : (isDark ? "#e4e1ee" : "#464555"),
             }}
           >
             Borrowed
@@ -128,13 +130,13 @@ function IndividualDebtsListHeader({
           onPress={onSetLendTab}
           className="px-6 py-2 rounded-full"
           style={{
-            backgroundColor: !isTabBorrow ? "#006e2f" : "#eae6f4",
+            backgroundColor: !isTabBorrow ? "#006e2f" : (isDark ? "rgba(234, 230, 244, 0.1)" : "#eae6f4"),
           }}
         >
           <Text
             className="text-sm font-semibold font-outfit"
             style={{
-              color: !isTabBorrow ? "#ffffff" : "#464555",
+              color: !isTabBorrow ? "#ffffff" : (isDark ? "#e4e1ee" : "#464555"),
             }}
           >
             Lent
@@ -184,6 +186,7 @@ export default function IndividualDebtsScreen() {
       onMarkAsPaid={handleMarkAsPaid}
       onUpdateDebtor={handleUpdateDebtor}
       onDeleteDebtor={handleDeleteDebtor}
+      isDark={isDark}
     />
   );
 

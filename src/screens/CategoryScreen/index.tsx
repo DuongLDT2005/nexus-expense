@@ -104,7 +104,7 @@ const CategoryRow = memo(
 
     const editIconColor = isDark ? "#c3c0ff" : "#4f46e5"; // --primary
     const editBgClass = "bg-surface-highest";
-    const deleteIconColor = isDark ? "#ffb2b7" : "#95002b"; // --tertiary
+    const deleteIconColor = isDark ? "#400010" : "#95002b"; // --tertiary
     const deleteBgClass = "bg-tertiary-fixed-dim";
 
     const fallbackColor = isDark ? "#c3c0ff" : "#4f46e5";
