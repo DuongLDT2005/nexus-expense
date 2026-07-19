@@ -1,5 +1,6 @@
 import {IconName} from '../components/atoms/IconRegistry';
 
+// ─── Icon list (full registry) ────────────────────────────────────────────────
 export const CATEGORY_ICONS: IconName[] = [
   // Food & Dining
   'utensils',
@@ -269,4 +270,27 @@ export const CATEGORY_ICONS: IconName[] = [
   'info',
   'alert-circle',
   'verified',
+];
+
+// ─── Color palette for category pickers ──────────────────────────────────────
+export const CATEGORY_COLORS: string[] = [
+  '#3525cd', '#4f46e5', '#FF6B6B', '#6BCB77', '#FFC300',
+  '#C77DFF', '#FF9F1C', '#00B4D8', '#10B981', '#EC4899',
+  '#8B5CF6', '#F43F5E', '#14B8A6', '#F59E0B',
+];
+
+// ─── Default category suggestions shown on Add screen ────────────────────────
+export interface DefaultCategorySuggestion {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+export const DEFAULT_CATEGORY_SUGGESTIONS: DefaultCategorySuggestion[] = [
+  { name: 'Groceries',     icon: 'shopping-cart', color: '#4f46e5' },
+  { name: 'Dining Out',    icon: 'utensils',      color: '#FF6B6B' },
+  { name: 'Transport',     icon: 'car',           color: '#6BCB77' },
+  { name: 'Utilities',     icon: 'zap',           color: '#FFC300' },
+  { name: 'Entertainment', icon: 'film',          color: '#C77DFF' },
+  { name: 'Health',        icon: 'heart-pulse',   color: '#FF9F1C' },
 ];

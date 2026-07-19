@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import CategoryEntry from '../../components/molecules/CategoryEntry';
 
 export default function UpdateCategoryScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-background">
-      <Text className="text-lg font-semibold text-gray-700">UpdateCategoryScreen</Text>
-    </View>
-  );
+  const route = useRoute();
+  return <CategoryEntry type="Update" route={route} />;
 }

@@ -55,24 +55,32 @@ const HeaderContainer: React.FC<HeaderContainerProps> = ({ headerText }) => {
 
   return (
     <View
-      className="flex-row items-end justify-between bg-white/80 dark:bg-inverse-surface/80 border-b border-surface-high dark:border-outline-variant px-4 shadow-sm"
+      className="flex-row items-center justify-between bg-white dark:bg-inverse-surface px-4"
       style={{
-        paddingTop: insets.top,
-        height: 45 + insets.top,
-        paddingBottom: 12,
+        paddingTop: insets.top + 8,
+        paddingBottom: 14,
       }}
     >
       <View className="flex-row items-center gap-3">
         <TouchableOpacity onPress={handleProfileClick} activeOpacity={0.8}>
-          <View className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <PrimaryText className="text-sm font-bold text-white">
+          <View className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+            <PrimaryText className="text-base font-bold text-white">
               {initials.charAt(0)}
             </PrimaryText>
           </View>
         </TouchableOpacity>
-        <PrimaryText className="font-bold text-xl tracking-tight text-primary dark:text-primary-fixed-dim">
-          {headerText}
-        </PrimaryText>
+        <View>
+          <PrimaryText
+            size={10}
+            weight="semibold"
+            className="text-on-surface-variant tracking-widest uppercase"
+          >
+            Welcome back
+          </PrimaryText>
+          <PrimaryText className="font-bold text-lg tracking-tight text-on-surface dark:text-white">
+            {headerText}
+          </PrimaryText>
+        </View>
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("SettingsScreen")}

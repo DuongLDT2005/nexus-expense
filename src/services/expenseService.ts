@@ -11,6 +11,7 @@ export interface ExpenseData {
   categoryId: string;
   userId: string;
   date: string;
+  time?: string; // HH:MM (24h format)
 }
 
 export interface ExpenseWithCategory extends ExpenseData {
@@ -121,7 +122,7 @@ export const getAllExpensesByDate = async (
 ): Promise<ExpenseWithCategory[]> => {
   try {
     const all = await getAllExpensesByUserIdWithCategory(userId);
-    return all.filter(e => e.date === date);
+    return all.filter(e => e.date && e.date.startsWith(date));
   } catch {
     return [];
   }

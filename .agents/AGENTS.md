@@ -17,4 +17,10 @@ This file contains rules and guidelines that all AI agents must follow when writ
 
 ## 🎨 3. Stitch UI Design System Integration
 
-- **Shared Stitch Project:** Always use the shared project ID `3176465779063770102` when working with Stitch MCP tools.
+- Always use the shared project ID `3176465779063770102` when working with Stitch MCP tools.
+- **Typography Consistency:** Avoid using standard React Native `<Text>` components; always prefer the custom `<PrimaryText>` component for layout text to enforce uniform theme typography.
+- **UI Screen Synchronization:** Keep major list screens (like `CategoryScreen` and `DebtsScreen`) synchronized in layout. They must feature:
+  - Header title matching the screen's focus.
+  - Bento-style summary cards at the top using matching borders, shadows (`bg-surface-lowest border border-surface-high rounded-md p-6 shadow-sm`), and clean spacing.
+  - Lists rendered as swipeable cards (using `ReanimatedSwipeable`) supporting edit and delete actions.
+  - Floating Action Buttons (FAB) styled consistently (`w-14 h-14 bg-primary rounded-full items-center justify-center shadow-lg active:scale-90` with the `plus` icon).

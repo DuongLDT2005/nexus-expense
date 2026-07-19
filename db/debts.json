@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": "debt-bank-1",
+    "description": "Home upgrade loan",
+    "amount": 15000,
+    "debtorId": "debtor-bank",
+    "userId": "2",
+    "date": "2026-07-01",
+    "type": "Borrow"
+  },
+  {
+    "id": "debt-bob-1",
+    "description": "Borrowed for petrol",
+    "amount": 300,
+    "debtorId": "debtor-bob",
+    "userId": "2",
+    "date": "2026-07-15",
+    "type": "Borrow"
+  },
+  {
+    "id": "Ef_pFcIvU_0H83Vuj9QuDzux",
+    "description": "Lent for parking",
+    "amount": 10,
+    "debtorId": "uudjA3Kz4oKLDfgBDWA9HzyM",
+    "userId": "2",
+    "date": "2026-07-18T19:29:00",
+    "type": "Lend"
+  },
+  {
+    "id": "TYb2CN0CUUYwAoGoZIPX4N7D",
+    "description": "Borrowed for lunch",
+    "amount": 15,
+    "debtorId": "debtor-alice",
+    "userId": "2",
+    "date": "2026-07-19T19:41:54",
+    "type": "Borrow"
+  },
+  {
+    "id": "kbHzEfy4UHb1ZzFyknNMM_8w",
+    "description": "Lent for coffee",
+    "amount": 5,
+    "debtorId": "debtor-alice",
+    "userId": "2",
+    "date": "2026-07-18T19:42:00",
+    "type": "Lend"
+  }
+]

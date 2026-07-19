@@ -26,13 +26,13 @@
   --primary-container: 224 224 255;
   --on-primary-container: 0 0 110;
   --inverse-primary: 195 192 255;
-  --secondary: 34 197 94;
+  --secondary: 0 110 47;
   --on-secondary: 255 255 255;
   --secondary-container: 173 255 185;
-  --on-secondary-container: 0 33 6;
-  --tertiary: 244 63 94;
+  --on-secondary-container: 0 116 50;
+  --tertiary: 149 0 43;
   --on-tertiary: 255 255 255;
-  --tertiary-container: 255 218 218;
+  --tertiary-container: 191 15 60;
   --on-tertiary-container: 65 0 10;
   --error: 186 26 26;
   --on-error: 255 255 255;
