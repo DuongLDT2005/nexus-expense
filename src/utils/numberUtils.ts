@@ -71,7 +71,7 @@ export const formatNumber = (
     useGrouping?: boolean;
   } = {},
 ): string => {
-  const {locale = 'en-IN', minimumFractionDigits = 0, maximumFractionDigits = 2, useGrouping = true} = options;
+  const {locale = 'en-US', minimumFractionDigits = 0, maximumFractionDigits = 2, useGrouping = true} = options;
 
   try {
     const formatter = getNumberFormatter(locale, {
@@ -85,7 +85,7 @@ export const formatNumber = (
   }
 };
 
-export const formatCurrency = (amount: number, currencyCode?: string, locale: string = 'en-IN'): string => {
+export const formatCurrency = (amount: number, currencyCode?: string, locale: string = 'en-US'): string => {
   const maxDecimals = getCurrencyDecimals(currencyCode);
 
   if (!Number.isFinite(amount)) return '0';
@@ -112,7 +112,7 @@ export const formatWithSymbol = (
   amount: number,
   symbol: string,
   currencyCode?: string,
-  locale: string = 'en-IN',
+  locale: string = 'en-US',
 ): string => {
   const formattedAmount = formatCurrency(amount, currencyCode, locale);
   return `${symbol}${formattedAmount}`;

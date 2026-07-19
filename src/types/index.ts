@@ -64,6 +64,12 @@ export interface Debt {
   type: string;
 }
 
+export interface DebtorPreset {
+  name: string;
+  icon: string;
+  color: string;
+}
+
 // ─── Redux State Shapes ──────────────────────────────────────────────────────
 
 export interface AuthState {

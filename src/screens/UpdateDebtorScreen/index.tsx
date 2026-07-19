@@ -1,10 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import DebtorEntry from '../../components/molecules/DebtorEntry';
+import { useUpdateDebtorScreen } from './useUpdateDebtorScreen';
 
 export default function UpdateDebtorScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-background">
-      <Text className="text-lg font-semibold text-gray-700">UpdateDebtorScreen</Text>
-    </View>
-  );
+  return <DebtorEntry type="Update" {...useUpdateDebtorScreen()} />;
 }
