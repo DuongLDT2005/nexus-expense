@@ -134,5 +134,13 @@
     "userId": "1",
     "icon": "smile",
     "color": "#EC4899"
+  },
+  {
+    "id": "W3m2I2aiq5UzL9TkOTLCVd13",
+    "name": "Party",
+    "categoryStatus": true,
+    "userId": "2",
+    "icon": "wine",
+    "color": "#F43F5E"
   }
 ]

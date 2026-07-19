@@ -4,7 +4,7 @@ import PrimaryText from "./PrimaryText";
 import Icon from "./Icons";
 import useColorScheme from "../../hooks/useColorScheme";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface PrimaryButtonProps {
@@ -50,11 +50,13 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
     const bgClass =
       variant === "primary"
         ? "bg-primary shadow-xl shadow-primary/20 dark:shadow-black/40"
-        : variant === "secondary"
-          ? "bg-secondary shadow-md shadow-secondary/20 dark:shadow-black/40"
-          : variant === "outline"
-            ? "bg-surface-lowest border-[0.5px] border-outline-variant"
-            : "bg-transparent"; // ghost
+        : variant === "danger"
+          ? "bg-error shadow-xl shadow-error/20 dark:shadow-black/40"
+          : variant === "secondary"
+            ? "bg-secondary shadow-md shadow-secondary/20 dark:shadow-black/40"
+            : variant === "outline"
+              ? "bg-surface-lowest border-[0.5px] border-outline-variant"
+              : "bg-transparent"; // ghost
 
     // Resolve matching colors for Text & Icons according to design system
     const resolvedTextColor =
@@ -63,17 +65,21 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
         ? isDark
           ? "#1d00a5"
           : "#ffffff" // --on-primary
-        : variant === "secondary"
+        : variant === "danger"
           ? isDark
-            ? "#003824"
-            : "#ffffff" // --on-secondary
-          : variant === "outline"
+            ? "#690005"
+            : "#ffffff" // --on-error
+          : variant === "secondary"
             ? isDark
-              ? "#e6e1e5"
-              : "#1b1b1f" // --on-surface
-            : isDark
-              ? "#c3c0ff"
-              : "#4f46e5"); // --primary
+              ? "#003824"
+              : "#ffffff" // --on-secondary
+            : variant === "outline"
+              ? isDark
+                ? "#e6e1e5"
+                : "#1b1b1f" // --on-surface
+              : isDark
+                ? "#c3c0ff"
+                : "#4f46e5"); // --primary
 
     const widthClass = fullWidth ? "w-full" : "";
     const iconEl = icon ? (
