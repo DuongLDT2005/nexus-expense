@@ -11,6 +11,7 @@ export interface ExpenseData {
   categoryId: string;
   userId: string;
   date: string;
+  time?: string; // HH:MM (24h format)
 }
 
 export interface ExpenseWithCategory extends ExpenseData {

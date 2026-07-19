@@ -4,7 +4,7 @@ import PrimaryText from "./PrimaryText";
 import Icon from "./Icons";
 import useColorScheme from "../../hooks/useColorScheme";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface PrimaryButtonProps {
@@ -42,44 +42,68 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
     const isDark = useColorScheme() === "dark";
     const isDisabled = disabled || loading;
 
-    // Resolve text/icon colors
+    // Design system background colors
+    const bgClass =
+      variant === "primary"
+        ? "bg-primary shadow-xl shadow-primary/20 dark:shadow-black/40"
+        : variant === "danger"
+          ? "bg-error shadow-xl shadow-error/20 dark:shadow-black/40"
+          : variant === "secondary"
+            ? "bg-secondary shadow-md shadow-secondary/20 dark:shadow-black/40"
+            : variant === "outline"
+              ? "bg-surface-lowest border-[0.5px] border-outline-variant"
+              : "bg-transparent"; // ghost
+
+    // Resolve matching colors for Text & Icons according to design system
     const resolvedTextColor =
       textColor ||
       (variant === "primary"
-        ? "#ffffff"
-        : variant === "secondary"
-          ? isDark ? "#003824" : "#ffffff"
-          : variant === "outline"
-            ? isDark ? "#e6e1e5" : "#46445a"
-            : isDark ? "#c3c0ff" : "#4f46e5");
+        ? isDark
+          ? "#1d00a5"
+          : "#ffffff" // --on-primary
+        : variant === "danger"
+          ? isDark
+            ? "#690005"
+            : "#ffffff" // --on-error
+          : variant === "secondary"
+            ? isDark
+              ? "#003824"
+              : "#ffffff" // --on-secondary
+            : variant === "outline"
+              ? isDark
+                ? "#e6e1e5"
+                : "#1b1b1f" // --on-surface
+              : isDark
+                ? "#c3c0ff"
+                : "#4f46e5"); // --primary
 
     // Resolve background style
     const bgStyle = (() => {
       if (variant === "primary") {
         return {
-          backgroundColor: isDark ? '#7c78ff' : '#4338ca',
+          backgroundColor: isDark ? "#7c78ff" : "#4338ca",
         };
       }
       if (variant === "secondary") {
         return {
-          backgroundColor: isDark ? '#4ade80' : '#16a34a',
+          backgroundColor: isDark ? "#4ade80" : "#16a34a",
         };
       }
       if (variant === "outline") {
         return {
-          backgroundColor: isDark ? 'transparent' : '#fafafa',
+          backgroundColor: isDark ? "transparent" : "#fafafa",
           borderWidth: 1,
-          borderStyle: 'dashed' as const,
-          borderColor: isDark ? '#555' : '#c0bfca',
+          borderStyle: "dashed" as const,
+          borderColor: isDark ? "#555" : "#c0bfca",
         };
       }
-      return { backgroundColor: 'transparent' };
+      return { backgroundColor: "transparent" };
     })();
 
     const isRoundedRect = variant === "outline";
     const borderRadius = isRoundedRect ? 16 : 9999;
 
-    const widthStyle = fullWidth ? { width: '100%' as const } : {};
+    const widthStyle = fullWidth ? { width: "100%" as const } : {};
     const iconEl = icon ? (
       <Icon name={icon} size={ICON_S[size]} color={resolvedTextColor} />
     ) : null;
@@ -88,16 +112,16 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
       (variant === "outline" || size === "sm" ? "semibold" : "bold");
 
     return (
-      <View style={[{ position: 'relative' as const }, widthStyle]}>
+      <View style={[{ position: "relative" as const }, widthStyle]}>
         {/* Visual Button */}
         <View
           style={[
             {
               height: HEIGHT_NUM[size],
               borderRadius,
-              alignItems: 'center' as const,
-              justifyContent: 'center' as const,
-              flexDirection: 'row' as const,
+              alignItems: "center" as const,
+              justifyContent: "center" as const,
+              flexDirection: "row" as const,
               paddingHorizontal: 16,
               opacity: isDisabled ? 0.5 : 1,
             },

@@ -38,7 +38,8 @@ export interface Expense {
   title: string;
   amount: number;
   description?: string;
-  date: string; // ISO date string: YYYY-MM-DD
+  date: string;  // ISO date string: YYYY-MM-DD
+  time?: string; // HH:MM (24h format)
 }
 
 // ─── Debt ────────────────────────────────────────────────────────────────────
@@ -61,6 +62,12 @@ export interface Debt {
   description: string;
   date: string;
   type: string;
+}
+
+export interface DebtorPreset {
+  name: string;
+  icon: string;
+  color: string;
 }
 
 // ─── Redux State Shapes ──────────────────────────────────────────────────────
@@ -124,7 +131,13 @@ export type HomeStackParamList = {
   AddDebtsScreen: { debtorId: string };
   UpdateDebtScreen: { debtId: string };
   EverydayTransactionScreen: { date: string };
-  CategoryTransactionScreen: { categoryId: string };
+  CategoryTransactionScreen: {
+    categoryId: string;
+    categoryName: string;
+    categoryColor: string;
+    categoryIcon?: string;
+    yearMonth: string;
+  };
   ChooseCurrencyScreen: { isFromSettings?: boolean } | undefined;
 };
 

@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "debtor-alice",
+    "title": "Alice Nguyen",
+    "type": "Person",
+    "debtorStatus": true,
+    "userId": "2",
+    "icon": "user",
+    "color": "#3b82f6"
+  },
+  {
+    "id": "debtor-bank",
+    "title": "Bank Loan",
+    "type": "Loan",
+    "debtorStatus": true,
+    "userId": "2",
+    "icon": "landmark",
+    "color": "#32CD32"
+  },
+  {
+    "id": "debtor-bob",
+    "title": "Bob Tran",
+    "type": "Person",
+    "debtorStatus": true,
+    "userId": "2",
+    "icon": "user",
+    "color": "#1E90FF"
+  },
+  {
+    "id": "uudjA3Kz4oKLDfgBDWA9HzyM",
+    "title": "Emily",
+    "type": "Person",
+    "debtorStatus": true,
+    "userId": "2",
+    "icon": "user",
+    "color": "#1E90FF"
+  }
+]
